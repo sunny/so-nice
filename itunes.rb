@@ -37,12 +37,12 @@ __END__
       = @title
       ♬
 
-    %p
-      %a{:href => '/do?command=playpause', :title => "Play/Pause"} ▸
-      %a{:href => '/do?command=previous track', :title => "Previous"}  ←
-      %a{:href => '/do?command=next track', :title => "Next"} →
-      %a{:href => '/do?command=set sound volume to sound volume - 5', :title => "Quieter"}  ♪
-      %a{:href => '/do?command=set sound volume to sound volume %2B 5', :title => "Louder"} ♫
+%p
+  %a{:href => '/do?command=playpause', :title => "Play/Pause"} ▸
+  %a{:href => '/do?command=previous track', :title => "Previous"} ←
+  %a{:href => '/do?command=next track', :title => "Next"} →
+  %a{:href => '/do?command=set sound volume to sound volume - 5', :title => "Quieter"} ♪
+  %a{:href => '/do?command=set sound volume to sound volume %2B 5', :title => "Louder"} ♫
 
 @@ stylesheet
 body
@@ -59,5 +59,6 @@ a
   color: white
   -moz-border-radius: .2em
   -webkit-border-radius: .2em
-  &:hover
-    background: #999
+a:hover
+  background: #999
+
