@@ -49,8 +49,8 @@ __END__
       %a{:href => '/do?command=playpause', :title => "Play/Pause"} ▸
       %a{:href => '/do?command=previous track', :title => "Previous"} ←
       %a{:href => '/do?command=next track', :title => "Next"} →
-      %a{:href => '/do?command=set sound volume to sound volume - 5', :title => "Quieter"} ♪
-      %a{:href => '/do?command=set sound volume to sound volume %2B 5', :title => "Louder"} ♫
+      %a{:href => '/do?command=set sound volume to sound volume - 10', :title => "Quieter"} ♪
+      %a{:href => '/do?command=set sound volume to sound volume %2B 10', :title => "Louder"} ♫
 
 @@ stylesheet
 body
