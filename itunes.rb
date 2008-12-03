@@ -12,13 +12,13 @@ require 'rubygems'
 require 'sinatra'
 
 get '/do' do
-  %x(osascript -e 'tell app "iTunes" to #{params[:command]}');
+  %x(osascript -e 'tell app "iTunes" to #{params[:command]}')
   redirect '/'
 end
 
 get '/' do
-  @title = "Itunes #{%x{hostname}}"
-  @song = %x(osascript -e 'tell app "iTunes" to return (artist of current track) & " - " & (name of current track)')
+  @host = %x(hostname).strip
+  @song = %x(osascript -e 'tell app "iTunes" to return (artist of current track) & " - " & (name of current track)').strip
   haml :index
 end
 
@@ -34,13 +34,17 @@ __END__
 !!!
 %html
   %head
-    %title= @title
+    %title
+      = @song
+      &mdash; Itunes
+      = @host
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
     %meta{'http-equiv' => 'Refresh', :content => 10}
     %link{:rel => 'stylesheet', :href => '/stylesheet.css', :type => 'text/css'}
   %body
     %h1
-      = @title
+      Itunes
+      = @host
       ♬
 
     %p= @song
