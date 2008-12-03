@@ -1,5 +1,9 @@
 #!/usr/bin/env ruby
+# Sinatra-Itunes
 # Small app to control your Itunes via HTTP.
+#
+# By Sunny Ripert (http://sunfox.org)
+# Under the WTFPL
 #
 # Usage: `$ ruby itunes.rb`, then visit `http://localhost:4567`
 # Requires sinatra: `$ sudo gem install sinatra`
@@ -37,12 +41,12 @@ __END__
       = @title
       ♬
 
-%p
-  %a{:href => '/do?command=playpause', :title => "Play/Pause"} ▸
-  %a{:href => '/do?command=previous track', :title => "Previous"} ←
-  %a{:href => '/do?command=next track', :title => "Next"} →
-  %a{:href => '/do?command=set sound volume to sound volume - 5', :title => "Quieter"} ♪
-  %a{:href => '/do?command=set sound volume to sound volume %2B 5', :title => "Louder"} ♫
+    %p
+      %a{:href => '/do?command=playpause', :title => "Play/Pause"} ▸
+      %a{:href => '/do?command=previous track', :title => "Previous"} ←
+      %a{:href => '/do?command=next track', :title => "Next"} →
+      %a{:href => '/do?command=set sound volume to sound volume - 5', :title => "Quieter"} ♪
+      %a{:href => '/do?command=set sound volume to sound volume %2B 5', :title => "Louder"} ♫
 
 @@ stylesheet
 body
