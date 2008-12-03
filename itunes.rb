@@ -18,6 +18,7 @@ end
 
 get '/' do
   @title = "Itunes #{%x{hostname}}"
+  @song = %x(osascript -e 'tell app "iTunes" to return (artist of current track) & " - " & (name of current track)')
   haml :index
 end
 
@@ -35,11 +36,14 @@ __END__
   %head
     %title= @title
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
+    %meta{'http-equiv' => 'Refresh', :content => 10}
     %link{:rel => 'stylesheet', :href => '/stylesheet.css', :type => 'text/css'}
   %body
     %h1
       = @title
       ♬
+
+    %p= @song
 
     %p
       %a{:href => '/do?command=playpause', :title => "Play/Pause"} ▸
