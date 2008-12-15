@@ -11,14 +11,45 @@
 require 'rubygems'
 require 'sinatra'
 
-get '/do' do
-  %x(osascript -e 'tell app "iTunes" to #{params[:command]}')
+class Player
+  def playpause
+    cmd 'playpause'
+  end
+  def prev
+    cmd 'previous track'
+  end
+  def next
+    cmd 'next track'
+  end
+  def voldown
+    cmd 'set sound volume to sound volume - 10'
+  end
+  def volup
+    cmd 'set sound volume to sound volume + 10'
+  end
+  def current_track
+    cmd 'return (artist of current track) & " - " & (name of current track)'
+  end
+
+  private
+  def cmd(command)
+    %x(osascript -e 'tell app "iTunes" to #{command}').rstrip
+  end
+end
+
+
+player = Player.new
+
+post '/player' do
+  params.each { |k, v|
+    player.send(k) if player.respond_to?(k)
+  }
   redirect '/'
 end
 
 get '/' do
   @host = %x(hostname).strip
-  @song = %x(osascript -e 'tell app "iTunes" to return (artist of current track) & " - " & (name of current track)').strip
+  @song = player.current_track
   haml :index
 end
 
@@ -49,12 +80,13 @@ __END__
 
     %p= @song
 
-    %p
-      %a{:href => '/do?command=playpause', :title => "Play/Pause"} ▸
-      %a{:href => '/do?command=previous track', :title => "Previous"} ←
-      %a{:href => '/do?command=next track', :title => "Next"} →
-      %a{:href => '/do?command=set sound volume to sound volume - 10', :title => "Quieter"} ♪
-      %a{:href => '/do?command=set sound volume to sound volume %2B 10', :title => "Louder"} ♫
+    %form{:method => 'post', :action => 'player'}
+      %p
+        %input{:type=>'submit', :value => '▸', :name=>'playpause', :title => "Play/Pause"}
+        %input{:type=>'submit', :value => '←', :name=>'prev',      :title => "Previous"}
+        %input{:type=>'submit', :value => '→', :name=>'next',      :title => "Next"}
+        %input{:type=>'submit', :value => '♪', :name=>'voldown',   :title => "Quieter"} 
+        %input{:type=>'submit', :value => '♫', :name=>'volup',     :title => "Louder"}
 
 @@ stylesheet
 body
@@ -63,14 +95,18 @@ body
   background: white
   color: #333
   font: 1.5em Helvetica, sans-serif
-a
+input
+  font-size: 1em
   color: inherit
   text-decoration: none
   padding: .2em .3em
-  background: #ccc
-  color: white
-  -moz-border-radius: .2em
-  -webkit-border-radius: .2em
-a:hover
-  background: #999
+  background: #2b79d4
+  color: #fff
+  -moz-border-radius: .4em
+  -webkit-border-radius: .4em
+  border: .1em solid #2b79d4
+  cursor: pointer
+  &:hover
+    background: #83aedf
+    border-color: #77a1d1
 
