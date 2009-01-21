@@ -1,26 +1,26 @@
 
 class ItunesPlayer
   def playpause
-    cmd 'playpause'
+    tell_to 'playpause'
   end
   def prev
-    cmd 'previous track'
+    tell_to 'previous track'
   end
   def next
-    cmd 'next track'
+    tell_to 'next track'
   end
   def voldown
-    cmd 'set sound volume to sound volume - 10'
+    tell_to 'set sound volume to sound volume - 10'
   end
   def volup
-    cmd 'set sound volume to sound volume + 10'
+    tell_to 'set sound volume to sound volume + 10'
   end
   def current_track
-    cmd 'return (artist of current track) & " - " & (name of current track)'
+    tell_to 'return (artist of current track) & " - " & (name of current track)'
   end
 
   private
-  def cmd(command)
+  def tell_to(command)
     %x(osascript -e 'tell app "iTunes" to #{command}').rstrip
   end
 end
