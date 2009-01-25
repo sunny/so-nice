@@ -11,7 +11,7 @@
 require 'rubygems'
 require 'sinatra'
 
-PLAYER_NAME = "Itunes"
+PLAYER_NAME = ENV['DBUS_SESSION_BUS_ADDRESS'] ? "Rhythmbox" : "Itunes"
 
 require File.dirname(__FILE__) + '/' + PLAYER_NAME.downcase
 player = Kernel.const_get("#{PLAYER_NAME}Player").new
