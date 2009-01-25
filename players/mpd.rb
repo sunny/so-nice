@@ -9,16 +9,17 @@ class MpdPlayer < MusicPlayer
     mpc 'next'
   end
   def voldown
-    mpc 'volume -10%'
+    mpc 'volume -10'
   end
   def volup
-    mpc 'volume +10%'
+    mpc 'volume +10'
   end
   def volume
-  	mpc 'volume'
+    mpc('volume').grep(/([0-9]+)/)
+    $1
   end
   def current_track
-    mpc 'stats'
+    mpc('')
   end
   def launched?
   	%x(mpc 2> /dev/null)
