@@ -1,4 +1,4 @@
-class ItunesPlayer
+class ItunesPlayer < MusicPlayer
   def playpause
     tell_to 'playpause'
   end
@@ -21,7 +21,8 @@ class ItunesPlayer
     tell_to 'return (artist of current track) & " - " & (name of current track)'
   end
 	def launched?
-		current_track and $? == 0
+		%x(osascript -e 'tell app "Itunes" to return name of current_track' 2>/dev/null)
+		$? == 0
 	end
 
   private

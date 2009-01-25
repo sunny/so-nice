@@ -1,4 +1,4 @@
-class RhythmboxPlayer
+class RhythmboxPlayer < MusicPlayer
   def playpause
     tell_to 'play-pause'
   end
@@ -21,7 +21,7 @@ class RhythmboxPlayer
     tell_to 'print-playing'
   end
 	def launched?
-		not current_track.nil?
+		current_track != ""
 	end
 
   private

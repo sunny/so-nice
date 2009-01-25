@@ -10,11 +10,11 @@
 
 require 'rubygems'
 require 'sinatra'
+require 'haml'
+require File.dirname(__FILE__) + '/players/player.rb'
+Dir[File.dirname(__FILE__) + '/players/*'].each { |f| require f }
 
-PLAYER_NAME = ENV['DBUS_SESSION_BUS_ADDRESS'] ? "Rhythmbox" : "Itunes"
-
-require File.dirname(__FILE__) + '/players/' + PLAYER_NAME.downcase
-player = Kernel.const_get("#{PLAYER_NAME}Player").new
+player = MusicPlayer.launched or abort "Error: no music player launched!"
 
 post '/player' do
   params.each { |k, v| player.send(k) if player.respond_to?(k) }
@@ -24,6 +24,7 @@ end
 get '/' do
   @host = %x(hostname).strip
   @song = player.current_track
+  @player_name = player.class.to_s.gsub(/Player/, '')
   haml :index
 end
 
@@ -42,14 +43,14 @@ __END__
     %title
       = @song
       &mdash;
-      = PLAYER_NAME
+      = @player_name
       = @host
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
     %meta{'http-equiv' => 'Refresh', :content => 10}
     %link{:rel => 'stylesheet', :href => '/stylesheet.css', :type => 'text/css'}
   %body
     %h1
-      = PLAYER_NAME
+      = @player_name
       = @host
       ♬
 
