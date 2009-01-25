@@ -6,13 +6,15 @@ Small web application to play, pause, change volume or skip songs playing in iTu
 ![Screenshot](http://github.com/sunny/itunes-sinatra/raw/master/screenshot.png)
 
 
-- **Requires sinatra**:
+- **Requires**:
 
-        $ sudo gem install sinatra
+    Ruby, rubygems, sinatra and haml.
+
+        $ sudo gem install sinatra haml
 
 - **Usage**:
 
-        $ ruby app.rb
+        $ ruby app.rb -e production
 
     Then visit `http://localhost:4567`
 
