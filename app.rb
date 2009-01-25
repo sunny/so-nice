@@ -41,7 +41,8 @@ __END__
   %head
     %title
       = @song
-      &mdash; Itunes
+      &mdash;
+      = PLAYER_NAME
       = @host
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
     %meta{'http-equiv' => 'Refresh', :content => 10}
