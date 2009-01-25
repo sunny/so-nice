@@ -1,4 +1,3 @@
-
 class ItunesPlayer
   def playpause
     tell_to 'playpause'
@@ -21,6 +20,9 @@ class ItunesPlayer
   def current_track
     tell_to 'return (artist of current track) & " - " & (name of current track)'
   end
+	def launched?
+		current_track and $? == 0
+	end
 
   private
   def tell_to(command)

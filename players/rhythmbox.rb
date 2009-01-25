@@ -20,9 +20,12 @@ class RhythmboxPlayer
   def current_track
     tell_to 'print-playing'
   end
+	def launched?
+		not current_track.nil?
+	end
 
   private
   def tell_to(command)
-    %x(rhythmbox-client --#{command}).rstrip
+    %x(rhythmbox-client --no-start --#{command}).rstrip
   end
 end
