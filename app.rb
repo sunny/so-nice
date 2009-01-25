@@ -10,9 +10,11 @@
 
 require 'rubygems'
 require 'sinatra'
-require File.dirname(__FILE__) + '/itunes'
 
-player = ItunesPlayer.new
+PLAYER_NAME = "Itunes"
+
+require File.dirname(__FILE__) + '/' + PLAYER_NAME.downcase
+player = Kernel.const_get("#{PLAYER_NAME}Player").new
 
 post '/player' do
   params.each { |k, v| player.send(k) if player.respond_to?(k) }
@@ -46,7 +48,7 @@ __END__
     %link{:rel => 'stylesheet', :href => '/stylesheet.css', :type => 'text/css'}
   %body
     %h1
-      Itunes
+      = PLAYER_NAME
       = @host
       ♬
 
