@@ -15,6 +15,9 @@ class ItunesPlayer
   def volup
     tell_to 'set sound volume to sound volume + 10'
   end
+  def volume
+    tell_to 'return sound volume'
+  end
   def current_track
     tell_to 'return (artist of current track) & " - " & (name of current track)'
   end
