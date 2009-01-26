@@ -25,6 +25,10 @@ class ItunesPlayer < MusicPlayer
 		$? == 0
 	end
 
+  def name
+    "iTunes"
+  end
+
   private
   def tell_to(command)
     %x(osascript -e 'tell app "iTunes" to #{command}').rstrip

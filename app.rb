@@ -24,7 +24,7 @@ end
 get '/' do
   @host = %x(hostname).strip
   @song = player.current_track
-  @player_name = player.class.to_s.gsub(/Player/, '')
+  @player_name = player.name
   haml :index
 end
 
