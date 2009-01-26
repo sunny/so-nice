@@ -28,7 +28,7 @@ class RhythmboxPlayer < MusicPlayer
   end
 
 	def launched?
-		current_track != ""
+		%x(rhythmbox-client --no-start --print-playing 2>/dev/null).rstrip != ""
 	end
 
   private
