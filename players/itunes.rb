@@ -21,7 +21,7 @@ class ItunesPlayer < MusicPlayer
     tell_to 'return (artist of current track) & " - " & (name of current track)'
   end
 	def launched?
-		%x(osascript -e 'tell app "Itunes" to return name of current_track' 2>/dev/null)
+		%x(osascript -e 'tell app "Itunes" to return name of current track' 2>/dev/null)
 		$? == 0
 	end
 
