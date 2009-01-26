@@ -29,8 +29,8 @@ class MpdPlayer < MusicPlayer
   end
 
   def launched?
-  	%x(mpc 2> /dev/null)
-  	$? == 0
+    %x(mpc 2> /dev/null)
+    $? == 0
   end
 
   private

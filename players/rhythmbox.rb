@@ -20,16 +20,16 @@ class RhythmboxPlayer < MusicPlayer
   end
 
   def volume
-  	tell_to 'print-volume'
+    tell_to 'print-volume'
   end
 
   def current_track
     tell_to 'print-playing'
   end
 
-	def launched?
-		%x(rhythmbox-client --no-start --print-playing 2>/dev/null).rstrip != ""
-	end
+  def launched?
+    %x(rhythmbox-client --no-start --print-playing 2>/dev/null).rstrip != ""
+  end
 
   private
   def tell_to(command)
