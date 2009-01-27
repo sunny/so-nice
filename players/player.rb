@@ -1,7 +1,7 @@
 
-MUSIC_PLAYERS = []
-
 class MusicPlayer
+  MUSIC_PLAYERS = []
+
   def launched?
     false
   end
