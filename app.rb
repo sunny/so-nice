@@ -14,16 +14,17 @@ require 'haml'
 require File.dirname(__FILE__) + '/players/player.rb'
 Dir[File.dirname(__FILE__) + '/players/*'].each { |f| require f }
 
-player = MusicPlayer.launched or abort "Error: no music player launched!"
+configure do
+  $player = MusicPlayer.launched or abort "Error: no music player launched!"
+end
 
 post '/player' do
-  params.each { |k, v| player.send(k) if player.respond_to?(k) }
+  params.each { |k, v| $player.send(k) if $player.respond_to?(k) }
   redirect '/'
 end
 
 get '/' do
-  @song = player.current_track
-  @player = player
+  @track = $player.current_track
   haml :index
 end
 
@@ -35,19 +36,19 @@ __END__
 %html
   %head
     %title
-      = @song
+      = @track
       &mdash;
-      = @player.name
+      = $player.name
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
     %meta{'http-equiv' => 'Refresh', :content => 10}
     %link{:rel => 'stylesheet', :href => '/stylesheet.css', :type => 'text/css'}
   %body
     %h1
-      = @player.name
-      = @player.host
+      = $player.name
+      = $player.host
       ♬
 
-    %p= @song
+    %p= @track
 
     %form{:method => 'post', :action => 'player'}
       %p
