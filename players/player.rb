@@ -10,6 +10,10 @@ class MusicPlayer
     self.class.to_s.gsub(/Player/, '')
   end
 
+  def host
+    %x(hostname).strip
+  end
+
   def self.inherited(k)
     MUSIC_PLAYERS.push k.new
   end
@@ -17,6 +21,7 @@ class MusicPlayer
   def self.launched
     MUSIC_PLAYERS.find { |player| player.launched? }
   end
+
 end
 
 

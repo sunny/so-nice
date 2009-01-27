@@ -22,9 +22,8 @@ post '/player' do
 end
 
 get '/' do
-  @host = %x(hostname).strip
   @song = player.current_track
-  @player_name = player.name
+  @player = player
   haml :index
 end
 
@@ -38,15 +37,14 @@ __END__
     %title
       = @song
       &mdash;
-      = @player_name
-      = @host
+      = @player.name
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
     %meta{'http-equiv' => 'Refresh', :content => 10}
     %link{:rel => 'stylesheet', :href => '/stylesheet.css', :type => 'text/css'}
   %body
     %h1
-      = @player_name
-      = @host
+      = @player.name
+      = @player.host
       ♬
 
     %p= @song
