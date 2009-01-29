@@ -1,14 +1,14 @@
-A tiny iTunes player under Sinatra
-==================================
+So Nice
+=======
 
-Small web application to play, pause, change volume or skip songs playing in iTunes.
+> Everynight with my star friends  
+> We eat caviar and drink champage ♫
 
-![Screenshot](http://github.com/sunny/itunes-sinatra/raw/master/screenshot.png)
+A tiny web application to play, pause, change volume or skip songs playing
+in iTunes, Rhythmbox or MPD.
 
-
-- **Requires**:
-
-    Ruby, rubygems, sinatra and haml.
+- **Screenshot**: ![Screenshot](http://github.com/sunny/itunes-sinatra/raw/master/screenshot.png)
+- **Requires**: ruby, rubygems, sinatra & haml.
 
         $ sudo gem install sinatra haml
 
@@ -18,5 +18,6 @@ Small web application to play, pause, change volume or skip songs playing in iTu
 
     Then visit `http://localhost:4567`
 
-- **Author**: Sunny Ripert
-- **Licence**: under the WTFPL
+- **Author**: [Sunny Ripert](http://sunfox.org/)
+- **Licence**: [WTFPL](http://sam.zoy.org/wtfpl/)
+

@@ -1,13 +1,4 @@
 #!/usr/bin/env ruby
-# Sinatra-Itunes
-# Small app to control your Itunes via HTTP.
-#
-# By Sunny Ripert (http://sunfox.org)
-# Under the WTFPL
-#
-# Usage: `$ ruby app.rb`, then visit `http://localhost:4567`
-# Requires sinatra: `$ sudo gem install sinatra`
-
 require 'rubygems'
 require 'sinatra'
 require 'haml'
