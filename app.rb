@@ -1,7 +1,17 @@
 #!/usr/bin/env ruby
-require 'rubygems'
-require 'sinatra'
-require 'haml'
+
+begin
+  require 'sinatra'
+  require 'haml'
+rescue LoadError => e
+  e.message.gsub! /^no such file to load -- (.*)$/,
+    "\\0\nI'm sorry, I couldn't load the '\\1' library.\n" + \
+    "You should try using the rubygem:\n" + \
+    "  $ sudo gem install \\1\n" + \
+    "  $ ruby -rubygems #{$0} #{ARGV.join(' ')}\n"
+  raise e.class, e.message
+end
+
 require File.dirname(__FILE__) + '/players/player.rb'
 Dir[File.dirname(__FILE__) + '/players/*'].each { |f| require f }
 
