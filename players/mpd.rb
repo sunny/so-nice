@@ -33,9 +33,13 @@ class MpdPlayer < MusicPlayer
     $? == 0
   end
 
+  def host
+    ENV['MPD_HOST'] || super
+  end
+
   private
   def mpc(command)
-    %x(mpc #{command}).rstrip
+    %x(mpc #{command}).split("\n").first
   end
 end
 
