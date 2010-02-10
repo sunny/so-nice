@@ -32,16 +32,16 @@ class ItunesPlayer_Win < MusicPlayer
   end
 
   def launched?
-    require 'win32ole'
-    @itunes = WIN32OLE.new("iTunes.Application")
-    print "Windows iTunes driver launched :)\n"
-    return true
-  rescue
-    print "Could not load iTunes windows driver\n"
-    return false
+    begin
+      require 'win32ole'
+      @itunes = WIN32OLE.new("iTunes.Application")
+      return true
+    rescue LoadError
+      return false
+    end
   end
 
   def name
-    "iTunes (Windows)"
+    "iTunes"
   end
 end
