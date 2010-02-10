@@ -1,4 +1,4 @@
-class ItunesPlayer < MusicPlayer
+class ItunesPlayer_MacOSX < MusicPlayer
   def playpause
     tell_to 'playpause'
   end
