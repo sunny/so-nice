@@ -3,8 +3,8 @@
 require 'sinatra'
 require 'haml'
 
-require File.dirname(__FILE__) + '/players/player.rb'
-Dir[File.dirname(__FILE__) + '/players/*'].each { |f| require f }
+require 'lib/player'
+Dir[File.dirname(__FILE__) + '/lib/players/*'].each { |f| require f }
 
 configure do
   $player = MusicPlayer.launched or abort "Error: no music player launched!"
