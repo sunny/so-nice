@@ -4,15 +4,24 @@ body {
   background: black;
   color: white;
   font: 1.5em Helvetica, sans-serif;}
-h1 {
+
+h1, h2, h3 {
   margin: 0;
   padding: 0;
-  text-shadow: black 0px 0px 7px;
-  font-size: 200%;}
+  text-shadow: black 0px 0px 7px;}
+h1 {
+  font-size: 230%;}
+h2 {
+  font-size: 150%;}
+h3 {
+  font-size: 120%;
+  margin-top: 1ex;
+  font-weight: normal;}
 
 p {
   position: absolute;
   bottom: 10px;}
+
 input {
   font-size: 1em;
   color: inherit;

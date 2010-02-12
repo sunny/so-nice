@@ -16,7 +16,9 @@ post '/player' do
 end
 
 get '/' do
-  @track = $player.current_track
+  @title = $player.current_track
+  @artist = $player.current_artist
+  @album = $player.current_album
   haml :index
 end
 
@@ -28,14 +30,19 @@ __END__
 %html
   %head
     %title
-      = @track
-      &mdash;
-      = $player.name
+      - if @artist
+        = "#{@artist} &mdash; #{@title}"
+      - else
+        = @title
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
     %meta{'http-equiv' => 'Refresh', :content => 10}
     %link{:rel => 'stylesheet', :href => '/stylesheet.css', :type => 'text/css'}
   %body
-    %h1= @track
+    %h1= @title
+    - if @artist
+      %h2= @artist
+    - if @album
+      %h2= @album
 
     %form{:method => 'post', :action => 'player'}
       %p
