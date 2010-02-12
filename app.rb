@@ -35,12 +35,7 @@ __END__
     %meta{'http-equiv' => 'Refresh', :content => 10}
     %link{:rel => 'stylesheet', :href => '/stylesheet.css', :type => 'text/css'}
   %body
-    %h1
-      = $player.name
-      = $player.host
-      ♬
-
-    %p= @track
+    %h1= @track
 
     %form{:method => 'post', :action => 'player'}
       %p

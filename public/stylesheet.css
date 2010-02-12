@@ -1,20 +1,28 @@
 body {
-  padding: 0 5em;
+  padding: 2em;
   margin: 0;
-  background: white;
-  color: #333;
+  background: black;
+  color: white;
   font: 1.5em Helvetica, sans-serif;}
+h1 {
+  margin: 0;
+  padding: 0;
+  text-shadow: black 0px 0px 7px;
+  font-size: 200%;}
+
+p {
+  position: absolute;
+  bottom: 10px;}
 input {
   font-size: 1em;
   color: inherit;
   text-decoration: none;
   padding: .2em .3em;
-  background: #2b79d4;
-  color: #fff;
+  background: #222;
+  color: #aaa;
   -moz-border-radius: .4em;
   -webkit-border-radius: .4em;
-  border: .1em solid #2b79d4;
+  border: .1em solid #222;
   cursor: pointer;}
 input:hover {
-  background: #83aedf;
-  border-color: #77a1d1;}
+  border-color: inherit;}
