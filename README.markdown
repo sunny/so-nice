@@ -14,7 +14,7 @@ in iTunes, Rhythmbox or MPD.
 
 - **Usage**:
 
-        $ ruby -rubygems app.rb -e production
+        $ ruby app.rb -e production
 
     Then visit `http://localhost:4567`
 

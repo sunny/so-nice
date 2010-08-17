@@ -1,7 +1,12 @@
 #!/usr/bin/env ruby
 
-require 'sinatra'
-require 'haml'
+begin
+  require 'sinatra'
+  require 'haml'
+rescue LoadError
+  require 'rubygems'
+  retry
+end
 
 require 'lib/player'
 Dir[File.dirname(__FILE__) + '/lib/players/*'].each { |f| require f }
