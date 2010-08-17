@@ -5,7 +5,8 @@ begin
   require 'haml'
 rescue LoadError
   require 'rubygems'
-  retry
+  require 'sinatra'
+  require 'haml'
 end
 
 require 'lib/player'
