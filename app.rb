@@ -9,7 +9,7 @@ rescue LoadError
   require 'haml'
 end
 
-require 'lib/player'
+require File.dirname(__FILE__) + '/lib/player'
 Dir[File.dirname(__FILE__) + '/lib/players/*'].each { |f| require f }
 
 enable :inline_templates
