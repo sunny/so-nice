@@ -23,12 +23,16 @@ class ItunesPlayer_Win < MusicPlayer
     @itunes.SoundVolume
   end
 
-  def current_track
-    curTrack=@itunes.CurrentTrack
-    if(curTrack)
-      return (curTrack.Artist + " - " + curTrack.name)
-    end
-    ""
+  def track
+    @itunes.CurrentTrack.name
+  end
+
+  def artist
+    @itunes.CurrentTrack.Artist
+  end
+
+  def album
+    @itunes.CurrentTrack.Album
   end
 
   def launched?
