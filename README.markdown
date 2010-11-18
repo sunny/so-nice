@@ -7,10 +7,10 @@ So Nice
 A tiny web application to play, pause, change volume or skip songs playing
 in iTunes, Rhythmbox or MPD.
 
-- **Screenshot**: ![Screenshot](http://github.com/sunny/so-nice/raw/master/screenshot.png)
-- **Requires**: ruby, sinatra & haml
+- **Screenshot**: ![Screenshot](https://github.com/sunny/so-nice/raw/master/screenshot.png)
+- **Dependencies**: ruby, sinatra, haml, xml-simple & json
 
-        $ sudo gem install sinatra haml
+        $ sudo gem install sinatra haml xml-simple json
 
 - **Usage**:
 

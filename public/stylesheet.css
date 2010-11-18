@@ -2,6 +2,8 @@ body {
   padding: 2em;
   margin: 0;
   background: black;
+  background-repeat: no-repeat;
+  background-position: top right;
   color: white;
   font: 1.5em Helvetica, sans-serif;}
 
@@ -33,5 +35,6 @@ input {
   -webkit-border-radius: .4em;
   border: .1em solid #222;
   cursor: pointer;}
+
 input:hover {
   border-color: inherit;}

@@ -4,19 +4,20 @@ $LOAD_PATH.unshift 'lib/players'
 
 retried = false
 begin
-  require 'load_error'
-  require 'artist_image'
+  require 'sinatra'
+  require 'haml'
+  require 'xmlsimple'
+  require 'json'
 
+  require 'open-uri'
+
+  require 'artist_image'
   require 'player'
+
   require 'itunes_mac'
   require 'itunes_win'
   require 'mpd'
   require 'rhythmbox'
-
-  require 'sinatra'
-  require 'haml'
-  require 'xml-simple'
-  require 'json'
 
 rescue LoadError => e
   raise if retried
@@ -41,6 +42,7 @@ get '/' do
   @title = $player.track
   @artist = $player.artist
   @album = $player.album
+  @image_uri = ArtistImage.new(@artist).uri
   haml :index
 end
 
@@ -58,7 +60,7 @@ __END__
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
     %meta{'http-equiv' => 'Refresh', :content => 10}
     %link{:rel => 'stylesheet', :href => '/stylesheet.css', :type => 'text/css'}
-  %body
+  %body{:style => @image_uri ? "background-image:url(#{@image_uri})" : nil }
     %h1= @title
     - if @artist
       %h2= @artist
