@@ -1,16 +1,23 @@
 #!/usr/bin/env ruby
+$LOAD_PATH.unshift 'lib'
+$LOAD_PATH.unshift 'lib/players'
 
 begin
-  require 'sinatra'
-  require 'haml'
-rescue LoadError
-  require 'rubygems'
-  require 'sinatra'
-  require 'haml'
-end
+  require 'load_error'
+  require 'player'
+  require 'itunes_mac'
+  require 'itunes_win'
+  require 'mpd'
+  require 'rhythmbox'
 
-require File.dirname(__FILE__) + '/lib/player'
-Dir[File.dirname(__FILE__) + '/lib/players/*'].each { |f| require f }
+  require 'sinatra'
+  require 'haml'
+
+rescue LoadError => e
+  raise if !e.respond_to?(:retried?) or e.retried?
+  require 'rubygems'
+  retry
+end
 
 enable :inline_templates
 
@@ -29,6 +36,7 @@ get '/' do
   @album = $player.album
   haml :index
 end
+
 
 __END__
 @@ index
