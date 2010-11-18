@@ -2,8 +2,11 @@
 $LOAD_PATH.unshift 'lib'
 $LOAD_PATH.unshift 'lib/players'
 
+retried = false
 begin
   require 'load_error'
+  require 'artist_image'
+
   require 'player'
   require 'itunes_mac'
   require 'itunes_win'
@@ -12,10 +15,13 @@ begin
 
   require 'sinatra'
   require 'haml'
+  require 'xml-simple'
+  require 'json'
 
 rescue LoadError => e
-  raise if !e.respond_to?(:retried?) or e.retried?
+  raise if retried
   require 'rubygems'
+  retried = true
   retry
 end
 
