@@ -34,6 +34,11 @@ configure do
   $player = MusicPlayer.launched or abort "Error: no music player launched!"
 end
 
+helpers do
+  include Rack::Utils
+  alias_method :h, :escape_html
+end
+
 post '/player' do
   return if !settings.controls
   params.each { |k, v| $player.send(k) if $player.respond_to?(k) }
@@ -45,29 +50,39 @@ get '/' do
   @artist = $player.artist
   @album = $player.album
   @image_uri = ArtistImage.new(@artist).uri
-  haml :index
+  if request.env['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'
+    erb :indexjs
+  else
+    haml :index
+  end
 end
 
 
 __END__
+@@ indexjs
+$('#artist').text('<%=h(@artist)%>')
+$('#album').text('<%=h(@album)%>')
+$('#title').text('<%=h(@title)%>')
+$('title').text('<%=h("#{@artist} — #{@title}")%>')
+$('body').background('<%=h(@image_uri)%>')
+
 @@ index
 !!!
 %html
   %head
     %title
       - if @artist
-        = "#{@artist} &mdash; #{@title}"
+        = "#{@artist} — #{@title}"
       - else
         = @title
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
-    %meta{'http-equiv' => 'Refresh', :content => 10}
-    %link{:rel => 'stylesheet', :href => '/stylesheet.css', :type => 'text/css'}
+    %link{:rel => 'stylesheet', :href => '/stylesheet.css'}
   %body{:style => @image_uri ? "background-image:url(#{@image_uri})" : nil }
-    %h1= @title
+    %h1#title= @title
     - if @artist
-      %h2= @artist
+      %h2#artist= @artist
     - if @album
-      %h3= @album
+      %h3#album= @album
 
     - if settings.controls
       %form{:method => 'post', :action => 'player'}
@@ -78,3 +93,5 @@ __END__
           %input{:type=>'submit', :value => '♪', :name=>'voldown',   :title => "Quieter"}
           %input{:type=>'submit', :value => '♫', :name=>'volup',     :title => "Louder"}
 
+    %script{:src => 'http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'}
+    %script{:src => '/script.js'}
