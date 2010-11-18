@@ -38,7 +38,7 @@ post '/player' do
 end
 
 get '/' do
-  @title = $player.current_track
+  @title = $player.track
   @artist = $player.artist
   @album = $player.album
   haml :index
