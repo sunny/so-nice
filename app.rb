@@ -30,10 +30,12 @@ enable :inline_templates
 set :environment, ENV['RACK_ENV'] || :production
 
 configure do
+  set :controls, ENV['SONICE_CONTROLS'] != '0'
   $player = MusicPlayer.launched or abort "Error: no music player launched!"
 end
 
 post '/player' do
+  return if !settings.controls
   params.each { |k, v| $player.send(k) if $player.respond_to?(k) }
   redirect '/'
 end
@@ -67,11 +69,12 @@ __END__
     - if @album
       %h3= @album
 
-    %form{:method => 'post', :action => 'player'}
-      %p
-        %input{:type=>'submit', :value => '▸', :name=>'playpause', :title => "Play/Pause"}
-        %input{:type=>'submit', :value => '←', :name=>'prev',      :title => "Previous"}
-        %input{:type=>'submit', :value => '→', :name=>'next',      :title => "Next"}
-        %input{:type=>'submit', :value => '♪', :name=>'voldown',   :title => "Quieter"}
-        %input{:type=>'submit', :value => '♫', :name=>'volup',     :title => "Louder"}
+    - if settings.controls
+      %form{:method => 'post', :action => 'player'}
+        %p
+          %input{:type=>'submit', :value => '▸', :name=>'playpause', :title => "Play/Pause"}
+          %input{:type=>'submit', :value => '←', :name=>'prev',      :title => "Previous"}
+          %input{:type=>'submit', :value => '→', :name=>'next',      :title => "Next"}
+          %input{:type=>'submit', :value => '♪', :name=>'voldown',   :title => "Quieter"}
+          %input{:type=>'submit', :value => '♫', :name=>'volup',     :title => "Louder"}
 
