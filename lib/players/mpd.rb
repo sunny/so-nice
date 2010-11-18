@@ -24,8 +24,16 @@ class MpdPlayer < MusicPlayer
     $1
   end
 
-  def current_track
+  def track
     mpc('')
+  end
+
+  def artist
+    ''
+  end
+
+  def album
+    ''
   end
 
   def launched?

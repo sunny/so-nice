@@ -23,8 +23,16 @@ class RhythmboxPlayer < MusicPlayer
     tell_to 'print-volume'
   end
 
-  def current_track
+  def track
     tell_to 'print-playing'
+  end
+
+  def artist
+    ''
+  end
+  
+  def album
+    ''
   end
 
   def launched?
