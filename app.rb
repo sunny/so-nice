@@ -20,6 +20,7 @@ rescue LoadError => e
 end
 
 enable :inline_templates
+set :environment, ENV['RACK_ENV'] || :production
 
 configure do
   $player = MusicPlayer.launched or abort "Error: no music player launched!"
