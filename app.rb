@@ -25,8 +25,8 @@ end
 
 get '/' do
   @title = $player.current_track
-  @artist = $player.current_artist
-  @album = $player.current_album
+  @artist = $player.artist
+  @album = $player.album
   haml :index
 end
 
@@ -48,7 +48,7 @@ __END__
     - if @artist
       %h2= @artist
     - if @album
-      %h2= @album
+      %h3= @album
 
     %form{:method => 'post', :action => 'player'}
       %p

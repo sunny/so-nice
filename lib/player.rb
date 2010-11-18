@@ -1,10 +1,5 @@
-
 class MusicPlayer
   MUSIC_PLAYERS = []
-
-  def launched?
-    false
-  end
 
   def name
     self.class.to_s.gsub(/Player/, '')
@@ -14,6 +9,15 @@ class MusicPlayer
     %x(hostname).strip
   end
 
+  [:launched?, :playpause, :next, :prev,
+    :voldown, :volup, :volume,
+    :track, :artist, :album
+  ].each do |method|
+    define_method method do
+      raise NotImplementedError, "this player needs a #{method} method"
+    end
+  end
+
   def self.inherited(k)
     MUSIC_PLAYERS.push k.new
   end
@@ -21,10 +25,6 @@ class MusicPlayer
   def self.launched
     MUSIC_PLAYERS.find { |player| player.launched? }
   end
-
-
-  def current_artist; end
-  def current_album; end
 end
 
 

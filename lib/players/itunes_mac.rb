@@ -23,8 +23,16 @@ class ItunesPlayer_MacOSX < MusicPlayer
     tell_to 'return sound volume'
   end
 
-  def current_track
-    tell_to 'return (artist of current track) & " - " & (name of current track)'
+  def track
+    tell_to 'name of current track'
+  end
+
+  def artist
+    tell_to 'artist of current track'
+  end
+
+  def album
+    tell_to 'album of current track'
   end
 
   def launched?
