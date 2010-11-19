@@ -1,3 +1,5 @@
+require 'timeout'
+
 class MusicPlayer
   MUSIC_PLAYERS = []
 
@@ -23,8 +25,15 @@ class MusicPlayer
   end
 
   def self.launched
-    MUSIC_PLAYERS.find { |player| player.launched? }
+    MUSIC_PLAYERS.find { |player|
+      puts "Trying #{player.name}..."
+      begin
+        Timeout::timeout(5) { player.launched? }
+      rescue
+        puts "Timed out"
+        nil
+      end
+    }
   end
 end
-
 
