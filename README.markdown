@@ -14,7 +14,7 @@ in iTunes, Rhythmbox or MPD.
 
 - **Usage**:
 
-        $ ruby app.rb
+        $ ruby -rubygems so_nice.rb
 
     Then visit `http://localhost:4567`
 

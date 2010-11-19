@@ -1,4 +1,4 @@
-class ItunesPlayer_Win < MusicPlayer
+class ItunesWinPlayer < MusicPlayer
   def playpause
     @itunes.PlayPause()
   end
@@ -46,6 +46,6 @@ class ItunesPlayer_Win < MusicPlayer
   end
 
   def name
-    "iTunes"
+    "iTunes Windows"
   end
 end

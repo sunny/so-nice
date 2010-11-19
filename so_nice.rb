@@ -1,37 +1,21 @@
 #!/usr/bin/env ruby
-$LOAD_PATH.unshift 'lib'
-$LOAD_PATH.unshift 'lib/players'
+require 'sinatra'
+require 'haml'
 
-retried = false
-begin
-  require 'sinatra'
-  require 'haml'
-  require 'xmlsimple'
-  require 'json'
+require 'lib/artist_image'
+require 'lib/player'
+require 'lib/players/itunes'
+require 'lib/players/itunes_win'
+require 'lib/players/mpd'
+require 'lib/players/rhythmbox'
 
-  require 'open-uri'
-
-  require 'artist_image'
-  require 'player'
-
-  require 'itunes_mac'
-  require 'itunes_win'
-  require 'mpd'
-  require 'rhythmbox'
-
-rescue LoadError => e
-  raise if retried
-  require 'rubygems'
-  retried = true
-  retry
-end
-
-enable :inline_templates
 set :environment, ENV['RACK_ENV'] || :production
+enable :inline_templates
 
 configure do
   set :controls, ENV['SONICE_CONTROLS'] != '0'
   $player = MusicPlayer.launched or abort "Error: no music player launched!"
+  puts "Connected to #{$player.name}"
 end
 
 helpers do
@@ -56,7 +40,6 @@ get '/' do
     haml :index
   end
 end
-
 
 __END__
 @@ indexjs

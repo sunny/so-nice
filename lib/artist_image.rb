@@ -1,3 +1,7 @@
+require 'xmlsimple'
+require 'json'
+require 'open-uri'
+
 class ArtistImage
   attr_reader :uri
 
