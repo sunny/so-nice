@@ -1,5 +1,4 @@
 $.fn.background = function(bg) {
-  console.log('foo')
   return $(this).css('backgroundImage', 'url('+bg+')')
 }
 $(function() {
