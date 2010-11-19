@@ -1,0 +1,28 @@
+!!!
+%html
+  %head
+    %title
+      - if @artist
+        = "#{@artist} — #{@title}"
+      - else
+        = @title
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
+    %link{:rel => 'stylesheet', :href => '/stylesheet.css'}
+  %body{:style => @image_uri ? "background-image:url(#{@image_uri})" : nil }
+    %h1#title= @title
+    - if @artist
+      %h2#artist= @artist
+    - if @album
+      %h3#album= @album
+
+    - if settings.controls
+      %form{:method => 'post', :action => 'player'}
+        %p
+          %input{:type=>'submit', :value => '▸', :name=>'playpause', :title => "Play/Pause"}
+          %input{:type=>'submit', :value => '←', :name=>'prev',      :title => "Previous"}
+          %input{:type=>'submit', :value => '→', :name=>'next',      :title => "Next"}
+          %input{:type=>'submit', :value => '♪', :name=>'voldown',   :title => "Quieter"}
+          %input{:type=>'submit', :value => '♫', :name=>'volup',     :title => "Louder"}
+
+    %script{:src => 'http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'}
+    %script{:src => '/script.js'}

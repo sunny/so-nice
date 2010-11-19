@@ -10,7 +10,6 @@ require 'lib/players/mpd'
 require 'lib/players/rhythmbox'
 
 set :environment, ENV['RACK_ENV'] || :production
-enable :inline_templates
 
 configure do
   set :controls, ENV['SONICE_CONTROLS'] != '0'
@@ -34,47 +33,10 @@ get '/' do
   @artist = $player.artist
   @album = $player.album
   @image_uri = ArtistImage.new(@artist).uri
-  if request.env['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'
+  if request.xhr?
+    content_type :js
     erb :indexjs
   else
     haml :index
   end
 end
-
-__END__
-@@ indexjs
-$('#artist').text('<%=h(@artist)%>')
-$('#album').text('<%=h(@album)%>')
-$('#title').text('<%=h(@title)%>')
-$('title').text('<%=h("#{@artist} — #{@title}")%>')
-$('body').background('<%=h(@image_uri)%>')
-
-@@ index
-!!!
-%html
-  %head
-    %title
-      - if @artist
-        = "#{@artist} — #{@title}"
-      - else
-        = @title
-    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
-    %link{:rel => 'stylesheet', :href => '/stylesheet.css'}
-  %body{:style => @image_uri ? "background-image:url(#{@image_uri})" : nil }
-    %h1#title= @title
-    - if @artist
-      %h2#artist= @artist
-    - if @album
-      %h3#album= @album
-
-    - if settings.controls
-      %form{:method => 'post', :action => 'player'}
-        %p
-          %input{:type=>'submit', :value => '▸', :name=>'playpause', :title => "Play/Pause"}
-          %input{:type=>'submit', :value => '←', :name=>'prev',      :title => "Previous"}
-          %input{:type=>'submit', :value => '→', :name=>'next',      :title => "Next"}
-          %input{:type=>'submit', :value => '♪', :name=>'voldown',   :title => "Quieter"}
-          %input{:type=>'submit', :value => '♫', :name=>'volup',     :title => "Louder"}
-
-    %script{:src => 'http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'}
-    %script{:src => '/script.js'}

@@ -1,0 +1,5 @@
+$('#artist').text('<%=h(@artist)%>')
+$('#album').text('<%=h(@album)%>')
+$('#title').text('<%=h(@title)%>')
+$('title').text('<%=h("#{@artist} — #{@title}")%>')
+$('body').background('<%=h(@image_uri)%>')
