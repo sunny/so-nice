@@ -25,7 +25,9 @@ end
 post '/player' do
   return if !settings.controls
   params.each { |k, v| $player.send(k) if $player.respond_to?(k) }
-  redirect '/'
+  if !request.xhr?
+    redirect '/'
+  end
 end
 
 get '/' do

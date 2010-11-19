@@ -1,16 +1,28 @@
 $.fn.background = function(bg) {
   return $(this).css('backgroundImage', 'url('+bg+')')
 }
+
 $(function() {
-  function update_in(secs) {
+  // XHR that updates status every 10 seconds
+  function update() {
     setTimeout(function() {
       $.ajax({
-        url: '/',
         dataType: 'script',
-        success: function() { update_in(5) },
-        error: function() { update_in(10) }
+        success: update,
+        error: update
       })
-    }, secs * 1000)
+    }, 10 * 1000)
   }
-  update_in(5)
+  update()
+
+  // XHR to handle buttons
+  $('input').live('click', function(e) {
+    var form = $(this).parents('form')
+    $.ajax({
+      type: form.attr('method'),
+      url:  form.attr('action'),
+      data: this.name+'='+this.value
+    })
+    return false
+  })
 })
