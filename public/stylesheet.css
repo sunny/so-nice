@@ -1,9 +1,9 @@
 body {
   padding: 2em;
   margin: 0;
-  background: black;
-  background-repeat: no-repeat;
-  background-position: top right;
+  background: black center center fixed no-repeat;
+  -moz-background-size: cover;
+  background-size: cover;
   color: white;
   font: 1.5em Helvetica, sans-serif;}
 
@@ -11,10 +11,13 @@ h1, h2, h3 {
   margin: 0;
   padding: 0;
   text-shadow: black 0px 0px 7px;}
+
 h1 {
   font-size: 230%;}
+
 h2 {
   font-size: 150%;}
+
 h3 {
   font-size: 100%;
   margin-top: 1ex;
@@ -23,6 +26,12 @@ h3 {
 p {
   position: absolute;
   bottom: 10px;}
+
+form {
+  opacity: .5;}
+
+form:hover {
+  opacity: 1;}
 
 input {
   font-size: 1em;
