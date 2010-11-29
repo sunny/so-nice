@@ -16,5 +16,7 @@ class ArtistImage
       image = images[rand(images.size-1)]["sizes"].first["size"].first
       @uri = image['content']
     end
+    rescue OpenURI::HTTPError
+      ""
   end
 end
