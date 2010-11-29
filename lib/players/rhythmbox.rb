@@ -24,15 +24,15 @@ class RhythmboxPlayer < MusicPlayer
   end
 
   def track
-    tell_to 'print-playing'
+    tell_to 'print-playing-format=%tt'
   end
 
   def artist
-    ''
+    tell_to 'print-playing-format=%ta'
   end
   
   def album
-    ''
+    tell_to 'print-playing-format=%at'
   end
 
   def launched?
