@@ -2,18 +2,19 @@
 require 'sinatra'
 require 'haml'
 
-require 'lib/artist_image'
-require 'lib/player'
-require 'lib/players/itunes'
-require 'lib/players/itunes_win'
-require 'lib/players/mpd'
-require 'lib/players/rhythmbox'
+$: << File.join(File.dirname(__FILE__), 'lib')
+require 'sonice/artist_image'
+require 'sonice/player'
+require 'sonice/players/itunes'
+require 'sonice/players/itunes_win'
+require 'sonice/players/mpd'
+require 'sonice/players/rhythmbox'
 
 set :environment, ENV['RACK_ENV'] || :production
 
 configure do
   set :controls, ENV['SONICE_CONTROLS'] != '0'
-  $player = MusicPlayer.launched or abort "Error: no music player launched!"
+  $player = Sonice::Player.launched or abort "Error: no music player launched!"
   puts "Connected to #{$player.name}"
 end
 
@@ -34,7 +35,7 @@ get '/' do
   @title = $player.track
   @artist = $player.artist
   @album = $player.album
-  @image_uri = ArtistImage.new(@artist).uri
+  @image_uri = Sonice::ArtistImage.new(@artist).uri
   if request.xhr?
     content_type :js
     erb :indexjs
@@ -42,3 +43,4 @@ get '/' do
     haml :index
   end
 end
+
