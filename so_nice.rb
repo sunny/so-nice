@@ -2,12 +2,12 @@
 require 'sinatra'
 require 'haml'
 
-require 'lib/artist_image'
-require 'lib/player'
-require 'lib/players/itunes'
-require 'lib/players/itunes_win'
-require 'lib/players/mpd'
-require 'lib/players/rhythmbox'
+require './lib/artist_image'
+require './lib/player'
+require './lib/players/itunes'
+require './lib/players/itunes_win'
+require './lib/players/mpd'
+require './lib/players/rhythmbox'
 
 set :environment, ENV['RACK_ENV'] || :production
 
