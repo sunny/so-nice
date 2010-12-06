@@ -4,6 +4,7 @@ require 'haml'
 
 require './lib/artist_image'
 require './lib/player'
+require './lib/players/xmms2'
 require './lib/players/itunes'
 require './lib/players/itunes_win'
 require './lib/players/mpd'

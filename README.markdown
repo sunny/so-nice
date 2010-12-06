@@ -1,5 +1,6 @@
 So Nice
 =======
+(with XMMS2 support!)
 
 > Everynight with my star friends  
 > We eat caviar and drink champage ♫
@@ -18,6 +19,7 @@ in iTunes, Rhythmbox or MPD.
 
     Then visit `http://localhost:4567`
 
-- **Author**: [Sunny Ripert](http://sunfox.org/)
+- **Original Author**: [Sunny Ripert](http://sunfox.org/)
 - **Licence**: [WTFPL](http://sam.zoy.org/wtfpl/)
+- **XMMS2 player**: [Norman Köhring](http://nkoehring.de/)
 
