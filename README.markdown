@@ -1,7 +1,7 @@
 So Nice
 =======
 
-> Everynight with my star friends  
+> Everynight with my star friends
 > We eat caviar and drink champage ♫
 
 A tiny web application to play, pause, change volume or skip songs playing
@@ -20,7 +20,7 @@ With rubygems and git you can install it this way:
 
 To launch it:
 
-        $ ./so_nice.rb
+        $ ./sonice.rb
 
 Then visit `http://localhost:4567`
 
