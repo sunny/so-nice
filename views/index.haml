@@ -1,19 +1,13 @@
 !!!
 %html
   %head
-    %title
-      - if @artist
-        = "#{@artist} — #{@title}"
-      - else
-        = @title
+    %title= @artist ? "#{@artist} — #{@title}" : @title
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
     %link{:rel => 'stylesheet', :href => '/stylesheet.css'}
   %body{:style => @image_uri ? "background-image:url(#{@image_uri})" : nil }
     %h1#title= @title
-    - if @artist
-      %h2#artist= @artist
-    - if @album
-      %h3#album= @album
+    %h2#artist= @artist
+    %h3#album= @album
 
     - if settings.controls
       %form{:method => 'post', :action => 'player'}
