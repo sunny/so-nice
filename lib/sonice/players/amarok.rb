@@ -25,7 +25,7 @@ module Sonice
     end
 
     def track
-      get_metadata('tracknumber')
+      get_metadata('title')
     end
     
     def artist
@@ -46,7 +46,7 @@ module Sonice
     end
 
     def get_metadata(name)
-      tell_to('GetMetadata').match(/#{name}: (\S.*)/)[1]
+      tell_to('GetMetadata').match(/#{name}: (\S.*)/)[1] rescue nil
     end
   end
 end
