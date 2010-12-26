@@ -26,15 +26,15 @@ module Sonice
     end
 
     def track
-      mpc('')
+      mpc '-f "%title%" current'
     end
 
     def artist
-      ''
+      mpc '-f "%artist%" current'
     end
 
     def album
-      ''
+      mpc '-f "%album%" current'
     end
 
     def launched?
