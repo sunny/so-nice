@@ -47,3 +47,8 @@ input {
 
 input:hover {
   border-color: inherit;}
+
+@media (max-width:500px) {
+    input {
+	font-size: 2em;}
+}
