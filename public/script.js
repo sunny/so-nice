@@ -1,9 +1,5 @@
 $.fn.background = function(bg) {
-  return $(this).css('backgroundImage', 'url('+bg+')');
-}
-
-$.fn.empty_background = function() {
-  return $(this).css('backgroundImage', 'none');
+  return $(this).css('backgroundImage', bg ? 'url('+bg+')' : 'none');
 }
 
 $(function() {
@@ -11,8 +7,8 @@ $(function() {
     $('#artist').empty();
     $('#album').empty();
     $('#title').empty();
-    $('title').html('so nice');
-    $('body').empty_background();
+    $('title').html('So nice');
+    $('body').background();
   }
 
   // XHR that updates status every 10 seconds
