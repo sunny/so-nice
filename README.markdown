@@ -5,7 +5,7 @@ So Nice
 > We eat caviar and drink champage ♫
 
 A tiny web application to play, pause, change volume or skip songs playing
-in iTunes, MPD, Rhythmbox or XMMS2.
+in iTunes, MPD, Rhythmbox, XMMS2 or Amarok.
 
 ![Screenshot](https://github.com/sunny/so-nice/raw/master/screenshot.png)
 
