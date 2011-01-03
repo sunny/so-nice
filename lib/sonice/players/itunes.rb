@@ -37,8 +37,7 @@ module Sonice
     end
 
     def launched?
-      track
-      $? == 0
+      %x(osascript -e 'tell app "System Events" to count (every process whose name is "iTunes")' 2>/dev/null).rstrip
     end
 
     def name
