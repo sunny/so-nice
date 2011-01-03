@@ -4,25 +4,28 @@ So Nice
 > Everynight with my star friends
 > We eat caviar and drink champage ♫
 
-A tiny web application to play, pause, change volume or skip songs playing
-in iTunes, MPD, Rhythmbox, XMMS2 or Amarok.
+A small Web interface to play, pause, change volume or skip the currently
+playing song in iTunes, MPD, Rhythmbox, XMMS2 or Amarok.
 
 ![Screenshot](https://github.com/sunny/so-nice/raw/master/screenshot.png)
 
-You will need ruby.
+Setup
+-----
 
-With rubygems and git you can install it this way:
+With ruby, rubygems, the bundler gem (''gem install bundler'') and git, you can install it this way:
 
-        $ git clone git://github.com/sunny/so-nice.git
-        $ cd so-nice
-        $ gem install bundler
-        $ bundle
+    $ git clone git://github.com/sunny/so-nice.git
+    $ cd so-nice
+    $ bundle
 
-To launch it:
+Launch it with:
 
-        $ ./sonice.rb
+    $ ./sonice.rb
 
 Then visit `http://localhost:4567`
 
-Licence: [WTFPL](http://sam.zoy.org/wtfpl/)
 
+Licence
+-------
+
+[WTFPL](http://sam.zoy.org/wtfpl/)
