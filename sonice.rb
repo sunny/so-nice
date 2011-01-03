@@ -13,6 +13,7 @@ require './sonice/players/itunes_win'
 require './sonice/players/mpd'
 require './sonice/players/rhythmbox'
 require './sonice/players/xmms2'
+require './sonice/players/amarok'
 
 set :environment, ENV['RACK_ENV'] || :production
 
