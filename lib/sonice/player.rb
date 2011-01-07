@@ -29,7 +29,7 @@ module Sonice
         puts "Trying #{player.name}..."
         begin
           Timeout::timeout(5) { player.launched? }
-        rescue
+        rescue Timeout::Error
           puts "Timed out"
           nil
         end
