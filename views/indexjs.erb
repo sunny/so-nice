@@ -1,5 +1,10 @@
 $('#artist').html('<%=h(@artist)%>')
 $('#album').html('<%=h(@album)%>')
 $('#title').html('<%=h(@title)%>')
-$('title').html('<%=h("#{@artist} ") + "&ndash;" + h(" #{@title}")%>')
 $('body').background('<%=h(@image_uri)%>')
+
+<% if (!@artist && !@title) %>
+$('title').html('So nice')
+<% else %>
+$('title').html('<%=h(@artist)%> <%=@artist && @title ? "–" : ""%> <%=h(@title)%>')
+<% end %>

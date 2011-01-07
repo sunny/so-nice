@@ -18,10 +18,8 @@ $(function() {
         dataType: 'script',
         success: update,
         error: function(XMLHttpRequest, textStatus, errorThrown) {
-            clear();
-            $('#title').html(errorThrown);
-            $('#artist').html(textStatus);
-            update();
+          clear();
+          update();
         }
       })
     }, 10 * 1000)
