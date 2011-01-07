@@ -37,7 +37,7 @@ module Sonice
     end
 
     def launched?
-      not %x(qdbus org.kde.amarok).match(/does not exist/)
+      not %x(qdbus org.kde.amarok 2>&1).match(/does not exist/)
     end
 
     private
