@@ -37,6 +37,8 @@ module Sonice
     end
 
     def launched?
+      return false if RUBY_PLATFORM !~ /cygwin|mswin|mingw|bccwin|wince|emx/
+
       begin
         require 'win32ole'
         @itunes = WIN32OLE.new("iTunes.Application")

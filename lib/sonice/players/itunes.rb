@@ -1,4 +1,3 @@
-require 'lib/util/os_finder'
 module Sonice
   class ItunesPlayer < Player
     def playpause
@@ -38,14 +37,9 @@ module Sonice
     end
 
     def launched?
-      puts "Is the OS Linux #{OS.linux?}" 
-      if OS.linux? and player.name.downcase.include? "itunes"
-          puts 'Escaping iTunes if OS is Linux'
-          return 
-      else
-        nb = %x(osascript -e 'tell app "System Events" to count (every process whose name is "iTunes")' 2>/dev/null).rstrip
-        nb.match(/^\d+/) and nb.to_i > 0 ? true : false
-      end
+      return false if RUBY_PLATFORM !~ /darwin/
+      nb = %x(osascript -e 'tell app "System Events" to count (every process whose name is "iTunes")' 2>/dev/null).rstrip
+      nb.match(/^\d+/) and nb.to_i > 0 ? true : false
     end
 
     def name
