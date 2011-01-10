@@ -37,3 +37,11 @@ $(function() {
     return false
   })
 })
+
+$(document).shortkeys({
+    'Space':   function () { $.post('player', { playpause: 'a'}); },
+    'N':       function () { $.post('player', { next: 'a'}); },
+    'P':       function () { $.post('player', { prev: 'a'}); },
+    '-':       function () { $.post('player', { voldown: 'a'}); },
+    '+':       function () { $.post('player', { volup: 'a'}); }
+});
