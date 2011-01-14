@@ -18,12 +18,12 @@
     - if settings.controls
       %form{:method => 'post', :action => 'player'}
         %p
-          %input{:type=>'submit', :value => '▸', :name=>'playpause', :title => "Play/Pause"}
-          %input{:type=>'submit', :value => '←', :name=>'prev',      :title => "Previous"}
-          %input{:type=>'submit', :value => '→', :name=>'next',      :title => "Next"}
-          %input{:type=>'submit', :value => '♪', :name=>'voldown',   :title => "Quieter"}
-          %input{:type=>'submit', :value => '♫', :name=>'volup',     :title => "Louder"}
+          %input#playpause{:type=>'submit', :value => '▸', :name=>'playpause', :title => "Play/Pause"}
+          %input#prev{     :type=>'submit', :value => '←', :name=>'prev',      :title => "Previous"}
+          %input#next{     :type=>'submit', :value => '→', :name=>'next',      :title => "Next"}
+          %input#voldown{  :type=>'submit', :value => '♪', :name=>'voldown',   :title => "Quieter"}
+          %input#volup{    :type=>'submit', :value => '♫', :name=>'volup',     :title => "Louder"}
 
     %script{:src => '/jquery.min.js'}
-    %script{:src => '/jquery.shortkeys.js'}
     %script{:src => '/script.js'}
+

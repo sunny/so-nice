@@ -1,32 +1,27 @@
 $.fn.background = function(bg) {
-  return $(this).css('backgroundImage', bg ? 'url('+bg+')' : 'none');
+  return $(this).css('backgroundImage', bg ? 'url('+bg+')' : 'none')
 }
 
 $(function() {
   function clear() {
-    $('#artist').empty();
-    $('#album').empty();
-    $('#title').empty();
-    $('title').html('So nice');
-    $('body').background();
+    $('#artist,#album,#title').empty()
+    $('title').html('So nice')
+    $('body').background()
   }
 
-  // XHR that updates status every 10 seconds
+  // XHR updating the text regularly
   function update() {
     setTimeout(function() {
       $.ajax({
         dataType: 'script',
         success: update,
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
-          clear();
-          update();
-        }
+        error: function() { clear(); update() }
       })
     }, 10 * 1000)
   }
   update()
 
-  // XHR to handle buttons
+  // XHR overriding the buttons
   $('input').live('click', function(e) {
     var form = $(this).parents('form')
     $.ajax({
@@ -36,12 +31,16 @@ $(function() {
     })
     return false
   })
+
+  // Keyboard shortcuts
+  $(document).keydown(function(e) {
+    switch(e.keyCode) {
+      case 32:  $('#playpause').click(); break // space
+      case 78:  $('#next'     ).click(); break // n
+      case 80:  $('#prev'     ).click(); break // p
+      case 107: $('#volup'    ).click(); break // +
+      case 109: $('#voldown'  ).click(); break // -
+    }
+  })
 })
 
-$(document).shortkeys({
-    'Space':   function () { $.post('player', { playpause: 'a'}); },
-    'N':       function () { $.post('player', { next: 'a'}); },
-    'P':       function () { $.post('player', { prev: 'a'}); },
-    '-':       function () { $.post('player', { voldown: 'a'}); },
-    '+':       function () { $.post('player', { volup: 'a'}); }
-});
