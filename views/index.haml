@@ -9,6 +9,7 @@
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
     %meta{:name => 'viewport', :content => 'width=device-width; initial-scale=1.0; maximum-scale=1.0;' }
     %link{:rel => 'stylesheet', :href => '/stylesheet.css'}
+
   %body{:style => @image_uri ? "background-image:url(#{@image_uri})" : nil }
     %h1#title= @title
     %h2#artist= @artist
@@ -23,6 +24,6 @@
           %input{:type=>'submit', :value => '♪', :name=>'voldown',   :title => "Quieter"}
           %input{:type=>'submit', :value => '♫', :name=>'volup',     :title => "Louder"}
 
-    %script{:src => 'http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'}
-    %script{:src => 'http://rikrikrik.com/js/jquery.shortkeys.js'}
+    %script{:src => '/jquery.min.js'}
+    %script{:src => '/jquery.shortkeys.js'}
     %script{:src => '/script.js'}
