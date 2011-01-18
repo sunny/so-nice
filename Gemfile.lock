@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    anyplayer (0.0.1)
     haml (3.0.24)
     json (1.4.6)
     rack (1.2.1)
@@ -14,6 +15,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  anyplayer
   haml
   json
   sinatra
