@@ -6,5 +6,5 @@ $('body').background('<%=h(@image_uri)%>')
 <% if (!@artist && !@title) %>
 $('title').html('So nice')
 <% else %>
-$('title').html('<%=h(@artist)%> <%=@artist && @title ? "–" : ""%> <%=h(@title)%>')
+$('title').html('<%=h(@artist)%> <%=@artist && @title ? "&ndash;" : ""%> <%=h(@title)%>')
 <% end %>
