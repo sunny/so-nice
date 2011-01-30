@@ -69,16 +69,13 @@ $(function() {
 
   // XHR updating the text regularly
   function update() {
-    setTimeout(function() {
-      $.ajax({
-        dataType: 'json',
-        complete: update,
-        success: updateInformation,
-        error:   updateInformation
-      })
-    }, 10 * 1000)
+    $.ajax({
+      dataType: 'json',
+      success: updateInformation,
+      error:   updateInformation
+    })
   }
-  update()
+  setInterval(update, 5000)
 
   // XHR overriding the buttons
   $('input').live('click', function(e) {
@@ -86,7 +83,8 @@ $(function() {
     $.ajax({
       type: form.attr('method'),
       url:  form.attr('action'),
-      data: this.name+'='+this.value
+      data: this.name+'='+this.value,
+      complete: update
     })
     return false
   })
