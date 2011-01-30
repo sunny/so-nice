@@ -56,8 +56,8 @@ get '/' do
   @album = $player.album
   @image_uri = artist_image(@artist)
   if request.xhr?
-    content_type :js
-    erb :indexjs
+    content_type :json
+    { :title => h(@title), :artist => h(@artist), :album => h(@album), :image_uri => @image_uri }.to_json
   else
     haml :index
   end

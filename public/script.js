@@ -3,19 +3,33 @@ $.fn.background = function(bg) {
 }
 
 $(function() {
-  function clear() {
-    $('#artist,#album,#title').empty()
-    $('title').html('So nice')
-    $('body').background()
+  function updateInformation(obj) {
+    obj = obj || {}
+    var artist = obj.artist || '',
+        album  = obj.album  || '',
+        title  = obj.title  || ''
+
+    $('#title' ).html(title)
+    $('#artist').html(artist)
+    $('#album' ).html(album)
+
+    if (!title && !title) {
+      $('title').html('So nice')
+    } else {
+      $('title').html(artist + (artist && title ? '&ndash;' : '') + title)
+    }
+
+    $('body').background(obj.image_uri)
   }
 
   // XHR updating the text regularly
   function update() {
     setTimeout(function() {
       $.ajax({
-        dataType: 'script',
-        success: update,
-        error: function() { clear(); update() }
+        dataType: 'json',
+        complete: update,
+        success: updateInformation,
+        error:   updateInformation
       })
     }, 10 * 1000)
   }
