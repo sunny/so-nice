@@ -54,11 +54,11 @@ get '/' do
   @title = $player.track
   @artist = $player.artist
   @album = $player.album
-  @image_uri = artist_image(@artist)
   if request.xhr?
     content_type :json
-    { :title => h(@title), :artist => h(@artist), :album => h(@album), :image_uri => @image_uri }.to_json
+    { :title => h(@title), :artist => h(@artist), :album => h(@album) }.to_json
   else
+    @image_uri = artist_image(@artist)
     haml :index
   end
 end

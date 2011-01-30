@@ -2,7 +2,31 @@ $.fn.background = function(bg) {
   return $(this).css('backgroundImage', bg ? 'url('+bg+')' : 'none')
 }
 
+Array.prototype.random = function() {
+  return this[Math.floor(Math.random() * this.length)]
+}
+
+// call a function asynchronously to minimize codepaths
+function async(fn) {
+  setTimeout(fn, 10)
+}
+
 $(function() {
+  function artistImage(artist, callback) {
+    if (!artist) { async(callback); return }
+    artist = encodeURI(artist)
+    var last_fm_uri = "http://ws.audioscrobbler.com/2.0/?format=json&method=artist.getimages&artist=%s&api_key=b25b959554ed76058ac220b7b2e0a026"
+    $.ajax({
+      url: last_fm_uri.replace('%s', artist),
+      dataType: 'jsonp',
+      success: function(obj) {
+        var images = obj.images.image
+        callback(images.length ? images.random().sizes.size[0]['#text'] : null)
+      },
+      error: function() {}
+    })
+  }
+
   function updateInformation(obj) {
     obj = obj || {}
     var artist = obj.artist || '',
@@ -16,10 +40,12 @@ $(function() {
     if (!title && !title) {
       $('title').html('So nice')
     } else {
-      $('title').html(artist + (artist && title ? '&ndash;' : '') + title)
+      $('title').html(artist + (artist && title ? ' &ndash; ' : '') + title)
     }
 
-    $('body').background(obj.image_uri)
+    artistImage(obj.artist, function(url) {
+      $('body').background(url)
+    })
   }
 
   // XHR updating the text regularly
