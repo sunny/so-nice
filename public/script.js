@@ -11,21 +11,40 @@ function async(fn) {
   setTimeout(fn, 10)
 }
 
+function map(ary, fn) {
+  var result = []
+  for (var i = 0, l = ary.length; i < l; i++) {
+    result.push(fn(ary[i]))
+  }
+  return result
+}
+
 $(function() {
   function artistImage(artist, callback) {
     if (!artist) { async(callback); return }
+
+    var cb = function() { callback(cache[artist].random()) }
+    var cache = artistImage.cache
     artist = encodeURI(artist)
+
+    // Deliver from cache
+    if (cache.hasOwnProperty(artist)) {
+      async(cb)
+      return
+    }
+
+    // Load
     var last_fm_uri = "http://ws.audioscrobbler.com/2.0/?format=json&method=artist.getimages&artist=%s&api_key=b25b959554ed76058ac220b7b2e0a026"
     $.ajax({
       url: last_fm_uri.replace('%s', artist),
       dataType: 'jsonp',
       success: function(obj) {
-        var images = obj.images.image
-        callback(images.length ? images.random().sizes.size[0]['#text'] : null)
-      },
-      error: function() {}
+        cache[artist] = map(obj.images.image, function(img) { return img.sizes.size[0]['#text'] })
+        cb()
+      }
     })
   }
+  artistImage.cache = {}
 
   function updateInformation(obj) {
     obj = obj || {}
