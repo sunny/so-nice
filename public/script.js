@@ -6,9 +6,16 @@ Array.prototype.random = function() {
   return this[Math.floor(Math.random() * this.length)]
 }
 
-// call a function asynchronously to minimize codepaths
-function async(fn) {
-  setTimeout(fn, 10)
+// recursively calls a function after a certain amount of time if it's not called during that time
+function regularly(fn, interval) {
+  var timeout = null
+  var wrapped = function() {
+    clearTimeout(timeout)
+    timeout = setTimeout(wrapped, interval)
+    fn()
+  }
+  timeout = setTimeout(wrapped, interval)
+  return wrapped
 }
 
 function map(ary, fn) {
@@ -20,16 +27,17 @@ function map(ary, fn) {
 }
 
 $(function() {
-  function artistImage(artist, callback) {
-    if (!artist) { async(callback); return }
+  var currentSong = {}
 
+  function artistImage(artist, callback) {
     var cb = function() { callback(cache[artist].random()) }
     var cache = artistImage.cache
     artist = encodeURI(artist)
 
     // Deliver from cache
     if (cache.hasOwnProperty(artist)) {
-      async(cb)
+      // execute the callback asynchronously to minimize codepaths
+      setTimeout(cb, 10)
       return
     }
 
@@ -39,15 +47,28 @@ $(function() {
       url: last_fm_uri.replace('%s', artist),
       dataType: 'jsonp',
       success: function(obj) {
-        cache[artist] = map(obj.images.image, function(img) { return img.sizes.size[0]['#text'] })
-        cb()
+        if (obj.images.image) {
+          cache[artist] = map(obj.images.image, function(img) { return img.sizes.size[0]['#text'] })
+          cb()
+        } else {
+          callback()
+        }
       }
     })
   }
   artistImage.cache = {}
 
+  var changeBackground = regularly(function() {
+    if (!currentSong.artist) return
+    artistImage(currentSong.artist, function(url) {
+      $('body').background(url)
+    })
+  }, 10e3)
+
   function updateInformation(obj) {
-    obj = obj || {}
+    var artistChange = currentSong.artist != obj.artist
+    currentSong = obj = obj || {}
+    
     var artist = obj.artist || '',
         album  = obj.album  || '',
         title  = obj.title  || ''
@@ -62,20 +83,17 @@ $(function() {
       $('title').html(artist + (artist && title ? ' &ndash; ' : '') + title)
     }
 
-    artistImage(obj.artist, function(url) {
-      $('body').background(url)
-    })
+    if (artistChange) changeBackground()
   }
 
   // XHR updating the text regularly
-  function update() {
+  var update = regularly(function() {
     $.ajax({
       dataType: 'json',
       success: updateInformation,
       error:   updateInformation
     })
-  }
-  setInterval(update, 5000)
+  }, 3e3)
 
   // XHR overriding the buttons
   $('input').live('click', function(e) {
