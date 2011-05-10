@@ -1,7 +1,12 @@
+GIT
+  remote: git://github.com/GordonDiggs/anyplayer.git
+  revision: d8310ee2ec25e391034319d07622784e76ee1bb0
+  specs:
+    anyplayer (0.0.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
-    anyplayer (0.0.1)
     haml (3.0.24)
     json (1.4.6)
     rack (1.2.1)
@@ -15,7 +20,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  anyplayer
+  anyplayer!
   haml
   json
   sinatra

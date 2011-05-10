@@ -15,14 +15,16 @@
     %h2#artist= @artist
     %h3#album= @album
 
-    - if settings.controls
-      %form{:method => 'post', :action => 'player'}
-        %p
+    %form{:method => 'post', :action => 'player'}
+      %p
+        - if settings.controls
           %input#playpause{:type=>'submit', :value => '▸', :name=>'playpause', :title => "Play/Pause"}
           %input#prev{     :type=>'submit', :value => '←', :name=>'prev',      :title => "Previous"}
           %input#next{     :type=>'submit', :value => '→', :name=>'next',      :title => "Next"}
           %input#voldown{  :type=>'submit', :value => '♪', :name=>'voldown',   :title => "Quieter"}
           %input#volup{    :type=>'submit', :value => '♫', :name=>'volup',     :title => "Louder"}
+        - if settings.voting
+          %input#skip{     :type=>'submit', :value => '↡', :name=>'skip',      :title => "Vote to Skip"}
 
     %script{:src => '/jquery.min.js'}
     %script{:src => '/script.js'}

@@ -4,5 +4,5 @@ gem "sinatra"
 gem "haml"
 gem "xml-simple"
 gem "json"
-gem "anyplayer"
+gem "anyplayer", :git => "git://github.com/GordonDiggs/anyplayer.git"
 

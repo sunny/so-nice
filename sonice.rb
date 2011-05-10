@@ -33,6 +33,7 @@ set :environment, ENV['RACK_ENV'] || :production
 
 configure do
   set :controls, ENV['SONICE_CONTROLS'] != '0'
+  set :voting, ENV['SONICE_VOTING'] != '0'
   $player = Anyplayer::launched or abort "Error: no music player launched!"
   puts "Connected to #{$player.name}"
 end
@@ -43,7 +44,7 @@ helpers do
 end
 
 post '/player' do
-  return if !settings.controls
+  return unless settings.controls || settings.voting
   params.each { |k, v| $player.send(k) if $player.respond_to?(k) }
   if !request.xhr?
     redirect '/'
