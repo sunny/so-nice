@@ -1,13 +1,9 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 require 'rubygems'
+require 'bundler'
 
-require 'sinatra'
-require 'haml'
-require 'xmlsimple'
-require 'json'
-require 'open-uri'
-require 'anyplayer'
+Bundler.require
 
 def artist_image(artist)
   last_fm_uri = "http://ws.audioscrobbler.com/2.0/?method=artist.getimages&artist=%s&api_key=b25b959554ed76058ac220b7b2e0a026"
