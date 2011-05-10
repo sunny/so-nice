@@ -67,6 +67,7 @@ $(function() {
 
   function updateInformation(obj) {
     var artistChange = currentSong.artist != obj.artist
+    var songChange = currentSong.title != obj.title
     currentSong = obj = obj || {}
     
     var artist = obj.artist || '',
@@ -83,6 +84,7 @@ $(function() {
       $('title').html(artist + (artist && title ? ' &ndash; ' : '') + title)
     }
 
+    if (artistChange || songChange) $('#vote').show();
     if (artistChange) changeBackground()
   }
 
@@ -104,6 +106,9 @@ $(function() {
       data: this.name+'='+this.value,
       complete: update
     })
+    if($(this).attr('id') == 'vote'){
+      $(this).fadeOut(500)
+    }
     return false
   })
 

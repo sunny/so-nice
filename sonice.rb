@@ -5,6 +5,9 @@ require 'bundler'
 
 Bundler.require
 
+require 'open-uri'
+require 'xmlsimple'
+
 def artist_image(artist)
   last_fm_uri = "http://ws.audioscrobbler.com/2.0/?method=artist.getimages&artist=%s&api_key=b25b959554ed76058ac220b7b2e0a026"
   return unless artist
