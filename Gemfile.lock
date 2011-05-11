@@ -1,22 +1,35 @@
+GIT
+  remote: git://github.com/GordonDiggs/anyplayer.git
+  revision: 62069d6c417a888115e68913fea0b637b66220c0
+  branch: voting
+  specs:
+    anyplayer (0.0.2)
+
 GEM
   remote: http://rubygems.org/
   specs:
-    anyplayer (0.0.1)
-    haml (3.0.24)
-    json (1.4.6)
-    rack (1.2.1)
-    sinatra (1.1.0)
+    daemons (1.1.3)
+    eventmachine (0.12.10)
+    haml (3.1.1)
+    json (1.5.1)
+    rack (1.2.2)
+    sinatra (1.2.6)
       rack (~> 1.1)
-      tilt (~> 1.1)
-    tilt (1.1)
-    xml-simple (1.0.12)
+      tilt (>= 1.2.2, < 2.0)
+    thin (1.2.11)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
+    tilt (1.3)
+    xml-simple (1.0.15)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  anyplayer
+  anyplayer!
   haml
   json
   sinatra
+  thin
   xml-simple

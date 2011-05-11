@@ -1,13 +1,12 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 require 'rubygems'
+require 'bundler'
 
-require 'sinatra'
-require 'haml'
-require 'xmlsimple'
-require 'json'
+Bundler.require
+
 require 'open-uri'
-require 'anyplayer'
+require 'xmlsimple'
 
 def artist_image(artist)
   last_fm_uri = "http://ws.audioscrobbler.com/2.0/?method=artist.getimages&artist=%s&api_key=b25b959554ed76058ac220b7b2e0a026"
@@ -33,6 +32,7 @@ set :environment, ENV['RACK_ENV'] || :production
 
 configure do
   set :controls, ENV['SONICE_CONTROLS'] != '0'
+  set :voting, ENV['SONICE_VOTING'] != '0'
   $player = Anyplayer::launched or abort "Error: no music player launched!"
   puts "Connected to #{$player.name}"
 end
@@ -43,7 +43,7 @@ helpers do
 end
 
 post '/player' do
-  return if !settings.controls
+  return unless settings.controls || settings.voting
   params.each { |k, v| $player.send(k) if $player.respond_to?(k) }
   if !request.xhr?
     redirect '/'
