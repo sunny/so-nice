@@ -23,12 +23,11 @@ h3 {
   margin-top: 1ex;
   font-weight: normal;}
 
-p {
-  position: absolute;
-  bottom: 10px;}
-
 form {
-  opacity: .5;}
+  opacity: .5;
+  position: absolute;
+  bottom: 42px;
+  left: 42px;}
 
 form:hover {
   opacity: 1;}
@@ -40,8 +39,10 @@ input {
   padding: .2em .3em;
   background: #222;
   color: #aaa;
-  -moz-border-radius: .4em;
   -webkit-border-radius: .4em;
+  -moz-border-radius: .4em;
+  -o-border-radius: .4em;
+  border-radius: .4em;
   border: .1em solid #222;
   cursor: pointer;}
 

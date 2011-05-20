@@ -1,4 +1,4 @@
-!!!
+!!! 5
 %html
   %head
     %title
@@ -16,15 +16,14 @@
     %h3#album= @album
 
     %form{:method => 'post', :action => 'player'}
-      %p
-        - if settings.controls
-          %input#playpause{:type=>'submit', :value => '▸', :name=>'playpause', :title => "Play/Pause"}
-          %input#prev{     :type=>'submit', :value => '←', :name=>'prev',      :title => "Previous"}
-          %input#next{     :type=>'submit', :value => '→', :name=>'next',      :title => "Next"}
-          %input#voldown{  :type=>'submit', :value => '♪', :name=>'voldown',   :title => "Quieter"}
-          %input#volup{    :type=>'submit', :value => '♫', :name=>'volup',     :title => "Louder"}
-        - if settings.voting
-          %input#vote{     :type=>'submit', :value => '↡', :name=>'vote',      :title => "Vote to Skip"}
+      - if settings.controls
+        %input#playpause{:type=>'submit', :value => '▸', :name=>'playpause', :title => "Play/Pause" }
+        %input#prev{     :type=>'submit', :value => '←', :name=>'prev',      :title => "Previous" }
+        %input#next{     :type=>'submit', :value => '→', :name=>'next',      :title => "Next" }
+        %input#voldown{  :type=>'submit', :value => '♪', :name=>'voldown',   :title => "Quieter" }
+        %input#volup{    :type=>'submit', :value => '♫', :name=>'volup',     :title => "Louder" }
+      - if settings.voting
+        %input#vote{     :type=>'submit', :value => '↡', :name=>'vote',      :title => "Vote to Skip" }
 
     %script{:src => '/jquery.min.js'}
     %script{:src => '/script.js'}
