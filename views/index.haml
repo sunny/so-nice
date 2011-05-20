@@ -18,13 +18,13 @@
     %form{:method => 'post', :action => 'player'}
       %input{:type => "hidden", :name => "_method", :value => "put"}
       - if settings.controls
-        %input#playpause{:type=>'submit', :value => '▸', :name=>'playpause', :title => "Play/Pause",   :'data-keyboard-key' => " ", :'data-keyboard-name' => "space" }
-        %input#prev{     :type=>'submit', :value => '←', :name=>'prev',      :title => "Previous",     :'data-keyboard-key' => "p" }
-        %input#next{     :type=>'submit', :value => '→', :name=>'next',      :title => "Next",         :'data-keyboard-key' => "n" }
-        %input#voldown{  :type=>'submit', :value => '♪', :name=>'voldown',   :title => "Quieter",      :'data-keyboard-key' => "-" }
-        %input#volup{    :type=>'submit', :value => '♫', :name=>'volup',     :title => "Louder",       :'data-keyboard-key' => "+" }
+        %input#playpause{:type=>'button', :value=>'▸', :name=>'playpause', :title=>"Play/Pause", :'data-key'=>" ", :'data-key-name'=>"space"}
+        %input#prev{     :type=>'button', :value=>'←', :name=>'prev',      :title=>"Previous",   :'data-key'=>"p"}
+        %input#next{     :type=>'button', :value=>'→', :name=>'next',      :title=>"Next",       :'data-key'=>"n"}
+        %input#voldown{  :type=>'button', :value=>'♪', :name=>'voldown',   :title=>"Quieter",    :'data-key'=>"-"}
+        %input#volup{    :type=>'button', :value=>'♫', :name=>'volup',     :title=>"Louder",     :'data-key'=>"+"}
       - if settings.voting
-        %input#vote{     :type=>'submit', :value => '↡', :name=>'vote',      :title => "Vote to Skip", :'data-keyboard-key' => "s" }
+        %input#vote{     :type=>'button', :value=>'↡', :name=>'vote',      :title=>"Vote to Skip", :'data-key' => "s" }
 
     %script{:src => '/jquery.min.js'}
     %script{:src => '/script.js'}
