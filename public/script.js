@@ -105,14 +105,14 @@ $(function() {
         album  = obj.album  || '',
         title  = obj.title  || ''
 
-    $('#title' ).html(title)
-    $('#artist').html(artist)
-    $('#album' ).html(album)
+    $('#title' ).text(title)
+    $('#artist').text(artist)
+    $('#album' ).text(album)
 
     if (!title && !title) {
-      $('title').html('So nice')
+      $('title').text('So nice')
     } else {
-      $('title').html(artist + (artist && title ? ' &ndash; ' : '') + title)
+      $('title').text(artist + (artist && title ? ' — ' : '') + title)
     }
 
     if (artistChange || songChange)
