@@ -82,7 +82,8 @@ $(function() {
 
   // Every 10 seconds change background on the $(body)
   var changeBackground = regularly(function() {
-    if (!currentSong.artist) $('body').background()
+    if (!currentSong.artist)
+      return $('body').background()
     artistImage(currentSong.artist, function(url) {
       $('body').background(url)
     })
