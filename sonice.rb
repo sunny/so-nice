@@ -40,8 +40,15 @@ helpers do
 end
 
 put '/player' do
-  return unless settings.controls || settings.voting
-  params.each { |k, v| $player.send(k) if $player.respond_to?(k) }
+  if settings.voting
+    $player.vote if params['vote']
+  end
+
+  if settings.controls
+    methods = %w(playpause prev next voldown volup) & params.keys
+    methods.each { |method| $player.send(method) }
+  end
+
   if !request.xhr?
     redirect '/'
   end
