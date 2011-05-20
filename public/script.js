@@ -9,14 +9,20 @@ Array.prototype.random = function() {
   return this[Math.floor(Math.random() * this.length)]
 }
 
-// Assign a keyboard key to an element and adds it to the title attribute. 
-//   $('a').keyClick('n')
-//   $('#button2').keyClick(' ', 'space')
-//   => <a title=>
-$.fn.keyClick = function(character, keyName) {
+// Assigns keyboard keys to elements and adds them to the title attributes.
+//
+// Needs the data-keyboard-key attribute on elements and optionally accepts
+// the data-keyboard-name attribute.
+//
+// Example:
+//   <a data-keyboard-key="h" href="/">home</a>
+//   <a data-keyboard-key=" " data-keyboard-name="Space" href="/space">space</a>
+//   $('a').keyboardShortcut()
+$.fn.keyboardShortcut = function() {
   return $(this).each(function() {
     var button = $(this),
-        title = keyName || character
+        character = $(this).data('keyboard-key'),
+        title = $(this).data('keyboard-name') || character
     button.attr('title', button.attr('title') + ' ('+title+')')
     $(document).keypress(function(e) {
       if (String.fromCharCode(e.charCode) == character)
@@ -144,11 +150,6 @@ $(function() {
   })
 
   // Keyboard shortcuts
-  $('#playpause').keyClick(' ', 'space')
-  $('#next').keyClick('n')
-  $('#prev').keyClick('p')
-  $('#volup').keyClick('+')
-  $('#voldown').keyClick('-')
-  $('#vote').keyClick('s')
+  $('input').keyboardShortcut()
 })
 
