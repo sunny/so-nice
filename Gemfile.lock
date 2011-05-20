@@ -1,7 +1,7 @@
 GIT
-  remote: git://github.com/GordonDiggs/anyplayer.git
-  revision: 62069d6c417a888115e68913fea0b637b66220c0
-  branch: voting
+  remote: git://github.com/sunny/anyplayer.git
+  revision: 30c3f5754a2a862d930761422ea3ac3a269ce8d6
+  tag: v0.0.2
   specs:
     anyplayer (0.0.2)
 
