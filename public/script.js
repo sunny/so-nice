@@ -1,7 +1,10 @@
+// Change CSS background image
 $.fn.background = function(bg) {
   return $(this).css('backgroundImage', bg ? 'url('+bg+')' : 'none')
 }
 
+// Return a random element from an Array
+//  [3, 9, 8].random() # => 5
 Array.prototype.random = function() {
   return this[Math.floor(Math.random() * this.length)]
 }
@@ -22,7 +25,8 @@ $.fn.keyClick = function(character, keyName) {
   })
 }
 
-// recursively calls a function after a certain amount of time if it's not called during that time
+// Recursively calls a function after a certain amount of time
+// if it's not called during that time
 function regularly(fn, interval) {
   var timeout = null
   var wrapped = function() {
@@ -45,6 +49,14 @@ function map(ary, fn) {
 $(function() {
   var currentSong = {}
 
+  // Get a new artist image from Last.fm via jsonp.
+  // When found calls the `callback` with the image url
+  // as the first argument.
+  // Example:
+  //
+  //   artistImage('LCD Soundsystem', function(url) {
+  //     alert(url)
+  //   });
   function artistImage(artist, callback) {
     var cb = function() { callback(cache[artist].random()) }
     var cache = artistImage.cache
@@ -74,13 +86,15 @@ $(function() {
   }
   artistImage.cache = {}
 
+  // Every 10 seconds change background on the $(body)
   var changeBackground = regularly(function() {
-    if (!currentSong.artist) return
+    if (!currentSong.artist) $('body').background()
     artistImage(currentSong.artist, function(url) {
       $('body').background(url)
     })
   }, 10e3)
 
+  // Update the HTML based on the currentSong object
   function updateInformation(obj) {
     var artistChange = currentSong.artist != obj.artist
     var songChange = currentSong.title != obj.title
@@ -133,7 +147,7 @@ $(function() {
 
     return false
   })
-   
+
   // Keyboard shortcuts
   $('#playpause').keyClick(' ', 'space')
   $('#next').keyClick('n')
