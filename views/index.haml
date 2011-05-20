@@ -16,6 +16,7 @@
     %h3#album= @album
 
     %form{:method => 'post', :action => 'player'}
+      %input{:type => "hidden", :name => "_method", :value => "put"}
       - if settings.controls
         %input#playpause{:type=>'submit', :value => '▸', :name=>'playpause', :title => "Play/Pause",   :'data-keyboard-key' => " ", :'data-keyboard-name' => "space" }
         %input#prev{     :type=>'submit', :value => '←', :name=>'prev',      :title => "Previous",     :'data-keyboard-key' => "p" }

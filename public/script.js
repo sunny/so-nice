@@ -137,7 +137,7 @@ $(function() {
 
     var form = $(this).parents('form')
     $.ajax({
-      type: form.attr('method'),
+      type: 'put',
       url:  form.attr('action'),
       data: this.name+'='+this.value,
       complete: update

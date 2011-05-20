@@ -42,7 +42,7 @@ helpers do
   alias_method :h, :escape_html
 end
 
-post '/player' do
+put '/player' do
   return unless settings.controls || settings.voting
   params.each { |k, v| $player.send(k) if $player.respond_to?(k) }
   if !request.xhr?
