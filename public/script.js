@@ -38,14 +38,6 @@ function regularly(fn, interval) {
   return wrapped
 }
 
-function map(ary, fn) {
-  var result = []
-  for (var i = 0, l = ary.length; i < l; i++) {
-    result.push(fn(ary[i]))
-  }
-  return result
-}
-
 $(function() {
   var currentSong = {}
 
@@ -76,7 +68,9 @@ $(function() {
       dataType: 'jsonp',
       success: function(obj) {
         if (obj.images.image) {
-          cache[artist] = map(obj.images.image, function(img) { return img.sizes.size[0]['#text'] })
+          cache[artist] = $.map(obj.images.image, function(img) {
+            return img.sizes.size[0]['#text']
+          })
           cb()
         } else {
           callback()
