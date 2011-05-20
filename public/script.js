@@ -6,6 +6,22 @@ Array.prototype.random = function() {
   return this[Math.floor(Math.random() * this.length)]
 }
 
+// Assign a keyboard key to an element and adds it to the title attribute. 
+//   $('a').keyClick('n')
+//   $('#button2').keyClick(' ', 'space')
+//   => <a title=>
+$.fn.keyClick = function(character, keyName) {
+  return $(this).each(function() {
+    var button = $(this),
+        title = keyName || character
+    button.attr('title', button.attr('title') + ' ('+title+')')
+    $(document).keypress(function(e) {
+      if (String.fromCharCode(e.charCode) == character)
+        button.click()
+    })
+  })
+}
+
 // recursively calls a function after a certain amount of time if it's not called during that time
 function regularly(fn, interval) {
   var timeout = null
@@ -111,16 +127,12 @@ $(function() {
     }
     return false
   })
-
+   
   // Keyboard shortcuts
-  $(document).keydown(function(e) {
-    switch(e.keyCode) {
-      case 32:  $('#playpause').click(); break // space
-      case 78:  $('#next'     ).click(); break // n
-      case 80:  $('#prev'     ).click(); break // p
-      case 107: $('#volup'    ).click(); break // +
-      case 109: $('#voldown'  ).click(); break // -
-    }
-  })
+  $('#playpause').keyClick(' ', 'space')
+  $('#next').keyClick('n')
+  $('#prev').keyClick('p')
+  $('#volup').keyClick('+')
+  $('#voldown').keyClick('-')
 })
 
