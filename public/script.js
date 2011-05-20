@@ -100,8 +100,10 @@ $(function() {
       $('title').html(artist + (artist && title ? ' &ndash; ' : '') + title)
     }
 
-    if (artistChange || songChange) $('#vote').show();
-    if (artistChange) changeBackground()
+    if (artistChange || songChange)
+      $('#vote').removeAttr('disabled').show();
+    if (artistChange)
+      changeBackground()
   }
 
   // XHR updating the text regularly
@@ -115,6 +117,9 @@ $(function() {
 
   // XHR overriding the buttons
   $('input').live('click', function(e) {
+    if ($(this).attr('disabled'))
+      return false
+
     var form = $(this).parents('form')
     $.ajax({
       type: form.attr('method'),
@@ -122,9 +127,10 @@ $(function() {
       data: this.name+'='+this.value,
       complete: update
     })
-    if($(this).attr('id') == 'vote'){
-      $(this).fadeOut(500)
-    }
+
+    if ($(this).attr('id') == 'vote')
+      $(this).attr('disabled', true).fadeOut(500)
+
     return false
   })
    
@@ -134,5 +140,6 @@ $(function() {
   $('#prev').keyClick('p')
   $('#volup').keyClick('+')
   $('#voldown').keyClick('-')
+  $('#vote').keyClick('s')
 })
 
