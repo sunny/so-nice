@@ -16,13 +16,18 @@ With ruby, rubygems, the bundler gem (''gem install bundler'') and git, you can 
 
     $ git clone git://github.com/sunny/so-nice.git
     $ cd so-nice
-    $ bundle
+    $ bundle install
+
+The configuration options are at the top of the `config.ru` file (all settings are enabled by default):
+
+* `ENV['SONICE_CONTROLS']` enables/disables on screen controls
+* `ENV['SONICE_VOTING']` enables/disables voting
 
 Launch it with:
 
-    $ ./sonice.rb
+    $ thin start -p 4567 -R config.ru
 
-Then visit `http://localhost:4567`
+Then visit [http://localhost:4567](http://localhost:4567)
 
 
 Licence
