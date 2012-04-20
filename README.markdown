@@ -31,7 +31,7 @@ Launch it with:
 $ thin start -p 4567 -R config.ru
 ```
 
-Then visit http://localhost:4567
+Then visit [http://localhost:4567](http://localhost:4567)
 
 
 Licence
