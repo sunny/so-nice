@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="So-nice ♫ : Small Web interface to control iTunes, MPD, Rhythmbox, XMMS2 or Amarok ♫" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>So-nice ♫</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/sunny/so-nice">Fork Me on GitHub</a>
+
+          <h1 id="project_title">So-nice ♫</h1>
+          <h2 id="project_tagline">Small Web interface to control iTunes, MPD, Rhythmbox, XMMS2 or Amarok ♫</h2>
+
+<!--
+          <section id="downloads">
+            <a class="zip_download_link" href="https://github.com/sunny/so-nice/zipball/master">Download this project as a .zip file</a>
+            <a class="tar_download_link" href="https://github.com/sunny/so-nice/tarball/master">Download this project as a tar.gz file</a>
+          </section>
+-->
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <blockquote>
+<p>Everynight with my star friends
+We eat caviar and drink champage</p>
+</blockquote>
+
+<p>A small Web interface to play, pause, change volume or skip the currently
+playing song in iTunes, MPD, Rhythmbox, XMMS2 or Amarok.</p>
+
+<p><img src="https://github.com/sunny/so-nice/raw/gh-pages/screenshot.png" alt="Screenshot"></p>
+
+<h2>Setup</h2>
+
+<p>With ruby, rubygems, the bundler gem (<code>gem install bundler</code>) and git, you can install it this way:</p>
+
+<div class="highlight">
+<pre><span class="nv">$ </span>git clone git://github.com/sunny/so-nice.git
+<span class="nv">$ </span><span class="nb">cd </span>so-nice
+<span class="nv">$ </span>bundle install
+</pre>
+</div>
+
+
+<p>The configuration options are at the top of the <code>config.ru</code> file (all settings are enabled by default):</p>
+
+<ul>
+<li>
+<code>ENV['SONICE_CONTROLS']</code> enables/disables on screen controls</li>
+<li>
+<code>ENV['SONICE_VOTING']</code> enables/disables voting</li>
+</ul><p>Launch it with:</p>
+
+<div class="highlight">
+<pre><span class="nv">$ </span>thin start -p 4567 -R config.ru
+</pre>
+</div>
+
+
+<p>Then visit <a href="http://localhost:4567">http://localhost:4567</a></p>
+
+<h2>Licence</h2>
+
+<p><a href="http://sam.zoy.org/wtfpl/">WTFPL</a>,
+<a href="https://github.com/sunny/so-nice/contributors">Contributors</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">So-nice ♫ maintained by <a href="https://github.com/sunny">sunny</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
