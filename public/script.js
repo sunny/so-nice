@@ -61,7 +61,7 @@ function artistImage(artist, callback) {
   }
 
   // Load
-  var last_fm_uri = "http://ws.audioscrobbler.com/2.0/?format=json&method=artist.getimages&artist=%s&api_key=b25b959554ed76058ac220b7b2e0a026"
+  var last_fm_uri = "http://ws.audioscrobbler.com/2.0/?format=json&method=artist.getimages&artist=%s&api_key=5636ca9fea36d0323a76638385aab1f3"
   $.ajax({
     url: last_fm_uri.replace('%s', artist),
     dataType: 'jsonp',
