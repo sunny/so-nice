@@ -22,12 +22,13 @@ helpers do
   alias_method :h, :escape_html
 
   def artist_image(artist)
-    last_fm_uri = "http://ws.audioscrobbler.com/2.0/?method=artist.getimages&artist=%s&api_key=b25b959554ed76058ac220b7b2e0a026"
+    last_fm_uri = "http://ws.audioscrobbler.com/2.0/?method=artist.getimages&artist=%s&api_key=5636ca9fea36d0323a76638385aab1f3"
     return unless artist
 
     artist = Rack::Utils.escape(artist)
     xml = XmlSimple.xml_in(open(last_fm_uri % artist).read.to_s)
-    images = xml['images'].first['image']
+    images = xml['images']
+    images = images.first['image'] if images
     if images
       image = images[rand(images.size-1)]["sizes"].first["size"].first
       return image['content']
