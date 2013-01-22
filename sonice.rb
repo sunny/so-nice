@@ -13,6 +13,7 @@ set :environment, ENV['RACK_ENV'] || :production
 configure do
   set :controls, ENV['SONICE_CONTROLS'] != '0'
   set :voting, ENV['SONICE_VOTING'] != '0'
+  set :overlay, ENV['SONICE_OVERLAY'] != '0'
   $player = Anyplayer::launched or abort "Error: no music player launched!"
   puts "Connected to #{$player.name}"
 end

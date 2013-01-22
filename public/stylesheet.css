@@ -8,6 +8,19 @@ body {
   font: 1.5em Helvetica, sans-serif;
 }
 
+.overlay{
+  margin: 0px;
+  padding: 0px;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: transparent url('images/overlay_01.png');
+  opacity: 0.3;
+  z-index: -1;
+}
+
 h1, h2, h3 {
   margin: 0;
   padding: 0;
@@ -52,6 +65,9 @@ form {
     border-radius: .4em;
     border: .1em solid #222;
     cursor: pointer;
+    width: 2em;
+    height: 2em;
+
   }
 
     input:hover {
