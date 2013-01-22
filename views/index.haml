@@ -11,6 +11,8 @@
     %link{:rel => 'stylesheet', :href => '/stylesheet.css'}
 
   %body{:style => @image_uri ? "background-image:url(#{@image_uri})" : nil }
+    - if settings.overlay
+      .overlay
     %h1#title= @title
     %h2#artist= @artist
     %h3#album= @album
