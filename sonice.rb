@@ -27,7 +27,7 @@ helpers do
 
     artist = Rack::Utils.escape(artist)
     xml = XmlSimple.xml_in(open(last_fm_uri % artist).read.to_s)
-    images = xml['images'].first['image']
+    images = xml['images'].first['image'] if xml['images']
     if images
       image = images[rand(images.size-1)]["sizes"].first["size"].first
       return image['content']
