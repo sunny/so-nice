@@ -1,23 +1,27 @@
 body {
   padding: 2em;
   margin: 0;
-  background: black center center fixed no-repeat;
-  -moz-background-size: cover;
+  background-color: black;
+  background-position: center center fixed no-repeat;
+  background-repeat: bo-repeat;
+  background-attachment: fixed;
   background-size: cover;
   color: white;
   font: 1.5em Helvetica, sans-serif;
 }
 
-.overlay{
-  margin: 0px;
-  padding: 0px;
+/* Overlay image */
+body:before {
+  content: " ";
+  margin: 0;
+  padding: 0;
   position: fixed;
-  left: 0px;
-  top: 0px;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
-  background: transparent url('images/overlay_01.png');
-  opacity: 0.3;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADAQMAAABs5if8AAAAA3NCSVQICAjb4U/gAAAABlBMVEUAAAD///+l2Z/dAAAAAnRSTlP/AOW3MEoAAAAJcEhZcwAACusAAArrAYKLDVoAAAAWdEVYdENyZWF0aW9uIFRpbWUAMjUvMDQvMTHvvlk6AAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M1cbXjNgAAAA5JREFUCJljSGB4wPAAAAVmAiGdUf+vAAAAAElFTkSuQmCC);
+  opacity: .3;
   z-index: -1;
 }
 

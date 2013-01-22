@@ -37,7 +37,6 @@ The configuration options are at the top of the `config.ru` file (all settings a
 
 * `ENV['SONICE_CONTROLS']` enables/disables on screen controls
 * `ENV['SONICE_VOTING']` enables/disables voting
-* `ENV['SONICE_OVERLAY']` enables/disables background overlay
 
 
 Licence
