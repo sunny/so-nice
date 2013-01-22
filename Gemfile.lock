@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/sunny/anyplayer.git
+  remote: https://github.com/sunny/anyplayer
   revision: 30c3f5754a2a862d930761422ea3ac3a269ce8d6
   tag: v0.0.2
   specs:

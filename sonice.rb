@@ -17,28 +17,6 @@ configure do
   puts "Connected to #{$player.name}"
 end
 
-helpers do
-  include Rack::Utils
-  alias_method :h, :escape_html
-
-  def artist_image(artist)
-    last_fm_uri = "http://ws.audioscrobbler.com/2.0/?method=artist.getimages&artist=%s&api_key=b25b959554ed76058ac220b7b2e0a026"
-    return unless artist
-
-    artist = Rack::Utils.escape(artist)
-    xml = XmlSimple.xml_in(open(last_fm_uri % artist).read.to_s)
-    images = xml['images'].first['image']
-    if images
-      image = images[rand(images.size-1)]["sizes"].first["size"].first
-      return image['content']
-    end
-
-    nil
-  rescue OpenURI::HTTPError
-    nil
-  end
-end
-
 put '/player' do
   if settings.voting
     $player.vote if params['vote']
@@ -62,7 +40,6 @@ get '/' do
     content_type :json
     { :title => @title, :artist => @artist, :album => @album }.to_json
   else
-    @image_uri = artist_image(@artist)
     haml :index
   end
 end
