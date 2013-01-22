@@ -17,6 +17,7 @@ configure do
   puts "Connected to #{$player.name}"
 end
 
+
 put '/player' do
   if settings.voting
     $player.vote if params['vote']
