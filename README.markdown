@@ -39,6 +39,10 @@ The configuration options are at the top of the `config.ru` file (all settings a
 - `SONICE_CONTROLS` enables/disables on-screen controls
 - `SONICE_VOTING` enables/disables voting
 
+Players
+-------
+
+Supports iTunes OS X, iTunes Windows, Rythmbox, MPD & XMMS thanks to [anyplayer](https://github.com/sunny/anyplayer).
 
 Licence
 -------
