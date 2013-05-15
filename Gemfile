@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "anyplayer", "~> 0.0.3"
+gem "anyplayer", "~> 0.0.4"
 
 gem "sinatra"
 gem "haml"
