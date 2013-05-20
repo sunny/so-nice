@@ -1,30 +1,11 @@
 ###
-JavaScript Helpers
+Helpers
 ###
-
-
 
 # Return a random element from an Array
 # [3, 9, 8].random() # => 5
 Array.prototype.random = ->
   @[Math.floor(Math.random() * @length)]
-
-
-# Recursively calls a function after a certain amount of time if it's not
-# called during that time
-regularly = (interval, fn) -> 
-  timeout = null
-  wrapped = ->
-    clearTimeout(timeout)
-    timeout = setTimeout(wrapped, interval)
-    fn()
-  timeout = setTimeout(wrapped, interval)
-  wrapped
-
-
-###
-jQuery helpers
-###
 
 # Change CSS background image
 $.fn.background = (bg) ->
@@ -42,6 +23,7 @@ $.fn.keyboardShortcut = ->
     $(document).keypress (e) ->
       if String.fromCharCode(e.charCode) == character
         button.click()
+
 
 ###
 So-nice helpers
@@ -61,7 +43,7 @@ artistImage = (artist, callback) ->
     return
 
   # Load
-  last_fm_uri = "http://ws.audioscrobbler.com/2.0/?format=json&method=artist.getimages&artist=%s&api_key=b25b959554ed76058ac220b7b2e0a026"
+  last_fm_uri = "http://ws.audioscrobbler.com/2.0/?format=json&method=artist.getimages&artist=%s&api_key=5636ca9fea36d0323a76638385aab1f3"
   $.ajax
     url: last_fm_uri.replace('%s', artist),
     dataType: 'jsonp',
@@ -72,7 +54,6 @@ artistImage = (artist, callback) ->
         cb()
       else
         callback()
-
 
 artistImage.cache = {}
 
@@ -106,14 +87,14 @@ $ ->
     if artistChange
       changeBackground()
 
-  # Change background on the body regularly
-  changeBackground = regularly 10e3, ->
+  # Change background on the body
+  changeBackground = ->
     return $('body').background() if !currentSong.artist
     artistImage currentSong.artist, (url) ->
       $('body').background(url)
 
-  # XHR updating the text regularly
-  update = regularly 3e3, ->
+  # XHR updating the text
+  update = ->
     $.ajax {
       dataType: 'json',
       success: updateInformation,
@@ -121,7 +102,7 @@ $ ->
     }
 
   # XHR overriding the buttons
-  $('input').live 'click', (e) ->
+  $(document).on 'click', 'input', (e) ->
     return false if $(this).attr('disabled')
 
     $.ajax {
@@ -138,3 +119,6 @@ $ ->
   # Keyboard shortcuts
   $('input').keyboardShortcut()
 
+update()
+setInterval(update, 500)
+setInterval(changeBackground, 10000)
