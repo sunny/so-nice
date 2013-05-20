@@ -36,8 +36,8 @@ Configuration
 
 The configuration options are at the top of the `config.ru` file (all settings are enabled by default):
 
-- `SONICE_CONTROLS` enables/disables on-screen controls
-- `SONICE_VOTING` enables/disables voting
+- `SONICE_CONTROLS` to disable on-screen controls
+- `SONICE_VOTING` to disable voting
 
 Players
 -------
