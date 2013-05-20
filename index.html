@@ -4,7 +4,7 @@
   <head>
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="So-nice ♫ : Small Web interface to control iTunes, MPD, Rhythmbox, XMMS2 or Amarok ♫" />
+    <meta name="description" content="Small Web interface to control iTunes, Spotify, MPD, Rhythmbox, Amarok and XMMS2." />
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
@@ -19,7 +19,7 @@
           <a id="forkme_banner" href="https://github.com/sunny/so-nice">Fork Me on GitHub</a>
 
           <h1 id="project_title">So-nice ♫</h1>
-          <h2 id="project_tagline">Small Web interface to control iTunes, MPD, Rhythmbox, XMMS2 or Amarok ♫</h2>
+          <h2 id="project_tagline">Small Web interface to control iTunes, Spotify, MPD, Rhythmbox, Amarok and XMMS2.</h2>
 
 <!--
           <section id="downloads">
@@ -57,9 +57,11 @@ playing song in iTunes, MPD, Rhythmbox, XMMS2 or Amarok.</p>
 <p>Launch it with:</p>
 
 <div class="highlight">
-<pre><span class="nv">$ </span>thin start
+<pre><span class="nv">$ </span>bundle exec thin start
 </pre>
 </div>
+
+<p>Then visit <a href="http://localhost:3000">http://localhost:3000</a></p>
 
 <h2>Configuration</h2>
 
@@ -67,11 +69,16 @@ playing song in iTunes, MPD, Rhythmbox, XMMS2 or Amarok.</p>
 
 <ul>
 <li>
-<code>ENV['SONICE_CONTROLS']</code> enables/disables on screen controls</li>
+<code>ENV['SONICE_CONTROLS']</code> to disable on-screen controls</li>
 <li>
-<code>ENV['SONICE_VOTING']</code> enables/disables voting</li>
+<code>ENV['SONICE_VOTING']</code> to disable voting</li>
 </ul>
 
+<h2>Players</h2>
+
+<p>Supports iTunes Mac, iTunes Windows, Spotify Mac, MPD, Rhythmbox, Amarok and XMMS2 thanks to <a href="https://github.com/sunny/anyplayer">anyplayer</a>.</p>
+
+<p>
 
 <p>Then visit <a href="http://localhost:3000">http://localhost:3000</a></p>
 
@@ -79,6 +86,7 @@ playing song in iTunes, MPD, Rhythmbox, XMMS2 or Amarok.</p>
 
 <p><a href="http://sam.zoy.org/wtfpl/">WTFPL</a>,
 <a href="https://github.com/sunny/so-nice/contributors">Contributors</a></p>
+
       </section>
     </div>
 
@@ -89,8 +97,6 @@ playing song in iTunes, MPD, Rhythmbox, XMMS2 or Amarok.</p>
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-
-    
 
   </body>
 </html>
