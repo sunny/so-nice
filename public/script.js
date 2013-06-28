@@ -35,6 +35,8 @@ $.fn.keyboardShortcut = function() {
 // Get a new artist image from Last.fm via jsonp
 // When found calls the `callback` with the image url as the first argument
 function artistImage(artist, callback) {
+  if (!artist)
+    return callback()
   var cb = function() { callback(cache[artist].random()) },
   cache = artistImage.cache
   artist = encodeURI(artist)
@@ -84,7 +86,7 @@ $(function() {
     $('#artist').text(artist)
     $('#album' ).text(album)
 
-    if (!title && !title)
+    if (!title)
       $('title').text('So nice')
     else
       $('title').text(artist + (artist && title ? ' — ' : '') + title)
@@ -98,8 +100,6 @@ $(function() {
 
   // Change background on the body regularly
   var changeBackground = function(){
-    if (!currentSong.artist)
-      return $('body').background()
     artistImage(currentSong.artist, function(url) {
       $('body').background(url)
     })
@@ -116,21 +116,20 @@ $(function() {
 
   // XHR overriding the buttons
   $(document).on('click', 'input', function(e) {
-    if ($(this).attr('disabled'))
-      return false
+    e.preventDefault();
 
-      $.ajax({
-        type: 'put',
-        url:  '/player',
-        data: this.name+'='+encodeURI(this.value),
-        complete: update
-      })
-
-      if ($(this).attr('id') == 'vote')
-        $(this).attr('disabled', true).fadeOut(500)
-
-      return false
+    $.ajax({
+      type: 'put',
+      url: '/player',
+      data: this.name+'='+encodeURI(this.value),
+      complete: update
     })
+  })
+
+  // Vote button
+  $(document).on('click', '#vote', function() {
+    $(this).attr('disabled', true).fadeOut(500)
+  })
 
   update();
   setInterval(update, 500)
