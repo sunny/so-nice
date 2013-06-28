@@ -1,7 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    anyplayer (0.0.4)
+    anyplayer (1.0.0)
     daemons (1.1.3)
     eventmachine (0.12.10)
     haml (3.1.1)
@@ -21,7 +21,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  anyplayer (~> 0.0.4)
+  anyplayer (~> 1.0.0)
   haml
   json
   sinatra
