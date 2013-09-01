@@ -15,6 +15,8 @@ configure do
   set :controls, ENV['SONICE_CONTROLS'] != '0'
   set :voting, ENV['SONICE_VOTING'] != '0'
   set :overlay, ENV['SONICE_OVERLAY'] != '0'
+  set :protection, except: :frame_options
+
   $player = Anyplayer::Selector.new.player
   abort "Error: no music player launched!" if !$player
   puts "Connected to #{$player.name}"
