@@ -35,35 +35,37 @@ $.fn.keyboardShortcut = function() {
 // Get a new artist image from Last.fm via jsonp
 // When found calls the `callback` with the image url as the first argument
 function artistImage(artist, callback) {
-  if (!artist)
-    return callback()
-  var cb = function() { callback(cache[artist].random()) },
-  cache = artistImage.cache
-  artist = encodeURI(artist)
+  // Commented out because Last.fm does not support this URL anymore.
 
-  // Deliver from cache
-  if (cache.hasOwnProperty(artist)) {
-    // execute the callback asynchronously to minimize codepaths
-    setTimeout(cb, 10)
-    return
-  }
+  // if (!artist)
+  //   return callback()
+  // var cb = function() { callback(cache[artist].random()) },
+  // cache = artistImage.cache
+  // artist = encodeURI(artist)
 
-  // Load
-  var last_fm_uri = "http://ws.audioscrobbler.com/2.0/?format=json&method=artist.getimages&artist=%s&api_key=5636ca9fea36d0323a76638385aab1f3"
-  $.ajax({
-    url: last_fm_uri.replace('%s', artist),
-    dataType: 'jsonp',
-    success: function(obj) {
-      if (obj.images.image) {
-        cache[artist] = $.map(obj.images.image, function(img) {
-          return img.sizes.size[0]['#text']
-        })
-        cb()
-      } else {
-        callback()
-      }
-    }
-  })
+  // // Deliver from cache
+  // if (cache.hasOwnProperty(artist)) {
+  //   // execute the callback asynchronously to minimize codepaths
+  //   setTimeout(cb, 10)
+  //   return
+  // }
+
+  // // Load
+  // var last_fm_uri = "http://ws.audioscrobbler.com/2.0/?format=json&method=artist.getimages&artist=%s&api_key=5636ca9fea36d0323a76638385aab1f3"
+  // $.ajax({
+  //   url: last_fm_uri.replace('%s', artist),
+  //   dataType: 'jsonp',
+  //   success: function(obj) {
+  //     if (obj.images.image) {
+  //       cache[artist] = $.map(obj.images.image, function(img) {
+  //         return img.sizes.size[0]['#text']
+  //       })
+  //       cb()
+  //     } else {
+  //       callback()
+  //     }
+  //   }
+  // })
 }
 artistImage.cache = {}
 
