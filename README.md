@@ -1,9 +1,9 @@
 So Nice ♫
 =======
 
-> Everynight with my star friends
->
-> We eat caviar and drink champage
+[![Gem Version](https://badge.fury.io/rb/sonice.png)](http://badge.fury.io/rb/sonice)
+
+> “Everynight with my star friends, we eat caviar and drink champage”
 
 A small Web interface to play, pause, change volume or skip the currently
 playing song in iTunes Mac, iTunes Windows, Spotify Mac, MPD, Rhythmbox, Amarok and XMMS2.
