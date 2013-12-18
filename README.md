@@ -43,7 +43,7 @@ The configuration options are at the top of the `config.ru` file (all settings a
 Players
 -------
 
-Supports iTunes Mac, iTunes Windows, Spotify Mac, MPD, Rhythmbox, Amarok and XMMS2 thanks to [anyplayer](https://github.com/sunny/anyplayer).
+Supports iTunes Mac, iTunes Windows, Spotify Mac, Rdio Mac, MPD, Rhythmbox, Amarok and XMMS2 thanks to [anyplayer](https://github.com/sunny/anyplayer).
 
 
 Contribute
