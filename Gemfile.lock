@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sonice (1.0.0)
+    sonice (2.1.0)
       anyplayer (> 1.1.1)
       haml
       sinatra
