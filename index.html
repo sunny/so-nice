@@ -38,26 +38,23 @@
 We eat caviar and drink champage</p>
 </blockquote>
 
-<p>A small Web interface to play, pause, change volume or skip the currently
-playing song in iTunes, MPD, Rhythmbox, XMMS2 or Amarok.</p>
+<p>A small Web interface to play, pause, change volume or skip the currently playing song in iTunes Mac, iTunes Windows, Spotify Mac, MPD, Rhythmbox, Amarok and XMMS2.</p>
 
 <p><img src="https://github.com/sunny/so-nice/raw/gh-pages/screenshot.png" alt="Screenshot"></p>
 
-<h2>Setup</h2>
+<h2>Install</h2>
 
-<p>With ruby, rubygems, the bundler gem (<code>gem install bundler</code>) and git, you can install it this way:</p>
+<p>Make sure you have Ruby and Rubygems installed. You can then type in a terminal:</p>
 
 <div class="highlight">
-<pre><span class="nv">$ </span>git clone git://github.com/sunny/so-nice.git
-<span class="nv">$ </span><span class="nb">cd </span>so-nice
-<span class="nv">$ </span>bundle install
+<pre><span class="nv">$ </span>gem install sonice
 </pre>
 </div>
 
 <p>Launch it with:</p>
 
 <div class="highlight">
-<pre><span class="nv">$ </span>bundle exec thin start
+<pre><span class="nv">$ </span>sonice
 </pre>
 </div>
 
@@ -65,14 +62,28 @@ playing song in iTunes, MPD, Rhythmbox, XMMS2 or Amarok.</p>
 
 <h2>Configuration</h2>
 
-<p>The configuration options are at the top of the <code>config.ru</code> file (all settings are enabled by default):</p>
+<p>You can launch <code>sonice</code> with these environment options:</p>
 
 <ul>
-<li>
-<code>ENV['SONICE_CONTROLS']</code> to disable on-screen controls</li>
-<li>
-<code>ENV['SONICE_VOTING']</code> to disable voting</li>
+<li><code>ENV['SONICE_CONTROLS']=0</code> to disable on-screen controls</li>
+<li><code>ENV['SONICE_VOTING']=0</code> to disable voting</li>
+<li><code>ENV['SONICE_PORT']=12345</code> to change port (default 3000)</li>
 </ul>
+
+<p>Example:</p>
+
+<div class="highlight">
+<pre><span class="nv">$ SONICE_CONTROLS</span>=0 <span class="nv">SONICE_VOTING</span>=0 sonice
+</pre>
+</div>
+
+<p>If you don't want to type them all the time, add them to your <code>.bashrc</code>:</p>
+
+<div class="highlight">
+<pre><span class="nb">export</span> <span class="nv">SONICE_CONTROLS</span>=0
+<span class="nb">export</span> <span class="nv">SONICE_VOTING</span>=0
+</pre>
+</div>
 
 <h2>Players</h2>
 
