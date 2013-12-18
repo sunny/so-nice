@@ -1,3 +1,13 @@
+PATH
+  remote: .
+  specs:
+    sonice (1.0.0)
+      anyplayer (> 1.1.1)
+      haml
+      sinatra
+      thin
+      xml-simple
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -7,7 +17,6 @@ GEM
     eventmachine (1.0.3)
     haml (4.0.3)
       tilt
-    json (1.8.0)
     rack (1.5.2)
     rack-protection (1.5.0)
       rack
@@ -27,9 +36,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  anyplayer (~> 1.1.2)
-  haml
-  json
-  sinatra
-  thin
-  xml-simple
+  rack
+  sonice!

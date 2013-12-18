@@ -1,2 +1,4 @@
-.bundle
 tmp
+pkg/*
+*.gem
+*.bundle

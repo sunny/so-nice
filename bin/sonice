@@ -1,0 +1,3 @@
+#!/usr/bin/env ruby
+require 'sonice/command_line'
+Sonice::CommandLine.parse(ARGV)
