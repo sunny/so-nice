@@ -14,7 +14,7 @@ playing song in iTunes Mac, iTunes Windows, Spotify Mac, MPD, Rhythmbox, Amarok 
 Install
 -------
 
-Make sure you have Ruby and Rubygems installed. You can then type in a terminal:
+Make sure you have Ruby > 1.9 and Rubygems installed. You can then type in a terminal:
 
 ```bash
 $ gem install sonice
