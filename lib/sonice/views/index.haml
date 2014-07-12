@@ -25,7 +25,27 @@
         %input#volup{    :type=>'button', :value=>'♫', :name=>'volup',     :title=>"Louder",     :'data-key'=>"+"}
       - if settings.voting
         %input#vote{     :type=>'button', :value=>'↡', :name=>'vote',      :title=>"Vote to Skip", :'data-key' => "s" }
+      %input#showremote{:type=>'button', :value=>'Remote', :name=>'showremotecontrol', :title=>"Show Remote", :'data-key'=>" ", :'data-key-name'=>"space"}
 
+  %form#remote-control{action: "player", method: "post", style: "display: none;"}
+    %nav
+      %input{name: "_method", title: "undefined (undefined)", type: "hidden", value: "put"}/
+      - if settings.controls
+        %a.button.top-right{href: "#", title: 'Volume +'}
+          %i.icon-volumeup
+            %input#volup{    :type=>'button', :value=>'♫', :name=>'volup',     :title=>"Louder",     :'data-key'=>"+"}/
+        %a.button.bottom-right{href: "#", title: 'Volume -'}
+          %i.icon-volumedown
+            %input#voldown{  :type=>'button', :value=>'♪', :name=>'voldown',   :title=>"Quieter",    :'data-key'=>"-"}/
+        %a.button.top-left{href: "#", title: 'Next Track'}
+          %i.icon-forward
+            %input#next{     :type=>'button', :value=>'→', :name=>'next',      :title=>"Next",       :'data-key'=>"n"}/
+        %a.button.bottom-left{href: "#", title: 'Previous Track'}
+          %i.icon-backward
+            %input#prev{     :type=>'button', :value=>'←', :name=>'prev',      :title=>"Previous",   :'data-key'=>"p"}/
+        %a.center-button{href: "#", title: "Play/Pause"}
+          %i.icon-stop
+            %input#playpause{"data-key" => " ", "data-key-name"=>"space", name: "playpause", title: "Play/Pause (space)", type: "button", value: "▸/ll"}/
     %script{:src => '/jquery.min.js'}
     %script{:src => '/script.js'}
 

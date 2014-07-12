@@ -80,7 +80,142 @@ form {
 
     @media (max-width:800px) {
       input {
-	      font-size: 2em;
-	    }
+        font-size: 2em;
+      }
     }
+
+/* Remote Control Position setup*/
+#remote-control{
+  position: absolute;
+  top: 450px;
+  left: 1010px;
+}
+
+#remote-control input{
+ float: left;
+ clear: both;
+ margin-top: 20px;
+ display: none;
+
+}
+
+/* Remote Control Body parts - as sourced from CodePen.io (http://codepen.io/vescoyez/pen/ulFtz)*/
+
+nav {
+  width: 200px;
+  height: 200px;
+  background: #60b8ce;
+  border-radius: 20%;
+  padding: 20px;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  transform: rotate(90deg);
+  box-shadow: inset -12px 0 12px -6px #dddddd, inset 12px 0 12px -6px #eeeeee, inset 0 0 0 12px #eeeeee, inset 2px 0 4px 12px rgba(0, 0, 0, 0.4), 1px 0 4px rgba(0, 0, 0, 0.8);
+  box-sizing: border-box;
+
+}
+
+a {
+  text-decoration: none;
+}
+
+.center-button {
+  display: block;
+  height: 38%;
+  width: 38%;
+  position: absolute;
+  top: 31%;
+  left: 31%;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 1px 0 4px rgba(0, 0, 0, 0.8);
+  content: '^';
+}
+
+.button {
+  display: block;
+  width: 46%;
+  height: 46%;
+  margin: 2%;
+  position: relative;
+  float: left;
+  box-shadow: 1px 0px 3px 1px rgba(0, 0, 0, 0.4), inset 0 0 0 1px white;
+}
+
+.button::after {
+  content: "";
+  display: block;
+  width: 50%;
+  height: 50%;
+  background: #60b8ce;
+  position: absolute;
+  border-radius: inherit;
+}
+
+.button.bottom-right {
+  border-radius: 0 100% 0 0;
+  background: -webkit-radial-gradient(bottom left, ellipse cover, white 35%, #eeeeee 75%);
+}
+
+.button.bottom-right::after {
+  bottom: 0;
+  left: 0;
+  -webkit-transform: skew(3deg, 3deg) scale(0.96);
+  -moz-transform: skew(3deg, 3deg) scale(0.96);
+  transform: skew(3deg, 3deg) scale(0.96);
+}
+
+.button.bottom-left {
+  border-radius: 0 0 100% 0;
+  background: -webkit-radial-gradient(top left, ellipse cover, white 35%, #eeeeee 75%);
+  background: radial-gradient(top left, ellipse cover, #ffffff 35%, #eeeeee 75%);
+}
+
+.button.bottom-left::after {
+  top: 0;
+  left: 0;
+  -webkit-transform: skew(-3deg, -3deg) scale(0.96);
+  -moz-transform: skew(-3deg, -3deg) scale(0.96);
+  transform: skew(-3deg, -3deg) scale(0.96);
+}
+
+.button.top-right {
+  border-radius: 100% 0 0 0;
+  background: -webkit-radial-gradient(bottom right, ellipse cover, white 35%, #eeeeee 75%);
+  background: radial-gradient(bottom right, ellipse cover, #ffffff 35%, #eeeeee 75%);
+}
+
+.button.top-right::after {
+  bottom: 0;
+  right: 0;
+  -webkit-transform: skew(-3deg, -3deg) scale(0.96);
+  -moz-transform: skew(-3deg, -3deg) scale(0.96);
+  transform: skew(-3deg, -3deg) scale(0.96);
+}
+
+.button.top-left {
+  border-radius: 0 0 0 100%;
+  background: -webkit-radial-gradient(top right, ellipse cover, white 35%, #eeeeee 75%);
+  background: radial-gradient(top right, ellipse cover, #ffffff 35%, #eeeeee 75%);
+}
+
+.button.top-left::after {
+  top: 0;
+  right: 0;
+  -webkit-transform: skew(3deg, 3deg) scale(0.96);
+  -moz-transform: skew(3deg, 3deg) scale(0.96);
+  transform: skew(3deg, 3deg) scale(0.96);
+}
+
+i {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  position: absolute;
+  font-size: 42px;
+  top: 36%;
+  left: 39%;
+  text-shadow: 1px 1px 4px white, 0px 0px 0px rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.15);
+}
 
