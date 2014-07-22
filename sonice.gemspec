@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.email       = ["sunny@sunfox.org"]
   s.homepage    = "http://github.com/sunny/so-nice"
   s.summary     = "Web interface to control your current music player"
-  s.description = "Small Web interface to control iTunes, Spotify, Rdio, MPD,
-                   Rhythmbox, Amarok and XMMS2. ♫"
+  s.description = "Small Web interface to control iTunes, Spotify, " + \
+                  "Rdio, MPD, Rhythmbox, Amarok and XMMS2. ♫"
   s.license     = "WTFPL"
 
   s.require_paths = ["lib"]
