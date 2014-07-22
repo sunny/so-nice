@@ -1,9 +1,11 @@
+# -*- encoding: utf-8 -*-
 require "sonice"
 require 'sonice/version'
 
 module Sonice
+  # Module CommandLine
   module CommandLine
-    extend self
+    module_function
 
     def parse(argv)
       case argv
@@ -19,7 +21,6 @@ module Sonice
         puts "Usage: sonice [--version]"
         exit(1)
       end
-
     end
   end
 end

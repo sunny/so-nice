@@ -1,4 +1,6 @@
+# -*- encoding: utf-8 -*-
 module Sonice
+  # Sinatra application
   class App < Sinatra::Base
     set :port, ENV['SONICE_PORT'] || 3000
     set :controls, ENV['SONICE_CONTROLS'] != '0'
@@ -12,29 +14,29 @@ module Sonice
     set :haml, format: :html5
     set :protection, except: :frame_options
 
+    def initialize
+      @player = player
+    end
+
     def player
-      @@player ||= begin
+      @player ||= begin
         puts "Looking for a player..."
         player = Anyplayer::Selector.new.player
-        abort "Error: no music player launched!" if !player
+        abort "Error: no music player launched!" unless player
         puts "Connected to #{player.name}"
         player
       end
     end
 
     put '/player' do
-      if settings.voting
-        player.vote if params['vote']
-      end
+      player.vote if settings.voting && params['vote']
 
       if settings.controls
         methods = %w(playpause prev next voldown volup) & params.keys
         methods.each { |method| player.send(method) }
       end
 
-      if !request.xhr?
-        redirect '/'
-      end
+      redirect "/" unless request.xhr?
     end
 
     get '/' do
@@ -43,11 +45,10 @@ module Sonice
       @album = player.album
       if request.xhr?
         content_type :json
-        { :title => @title, :artist => @artist, :album => @album }.to_json
+        { title: @title, artist: @artist, album: @album }.to_json
       else
         haml :index
       end
     end
-
   end
 end
