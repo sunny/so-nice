@@ -1,3 +1,4 @@
 #!/usr/bin/env ruby
+# -*- encoding: utf-8 -*-
 require 'sonice/command_line'
 Sonice::CommandLine.parse(ARGV)
