@@ -9,6 +9,7 @@
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
     %meta{:name => 'viewport', :content => 'width=device-width, initial-scale=1.0' }
     %link{:rel => 'stylesheet', :href => '/stylesheet.css'}
+    %link{:rel => 'stylesheet ', :href => 'http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css'}
 
   %body{:style => @image_uri ? "background-image:url(#{@image_uri})" : nil }
     %h1#title= @title
@@ -32,19 +33,19 @@
       %input{name: "_method", title: "undefined (undefined)", type: "hidden", value: "put"}/
       - if settings.controls
         %a.button.top-right{href: "#", title: 'Volume +'}
-          %i.icon-volumeup
+          %i.small.fa.fa-volume-up
             %input#volup{    :type=>'button', :value=>'♫', :name=>'volup',     :title=>"Louder",     :'data-key'=>"+"}/
         %a.button.bottom-right{href: "#", title: 'Volume -'}
-          %i.icon-volumedown
+          %i.small.fa.fa-volume-down
             %input#voldown{  :type=>'button', :value=>'♪', :name=>'voldown',   :title=>"Quieter",    :'data-key'=>"-"}/
         %a.button.top-left{href: "#", title: 'Next Track'}
-          %i.icon-forward
+          %i.small.fa.fa-forward
             %input#next{     :type=>'button', :value=>'→', :name=>'next',      :title=>"Next",       :'data-key'=>"n"}/
         %a.button.bottom-left{href: "#", title: 'Previous Track'}
-          %i.icon-backward
+          %i.small.fa.fa-backward
             %input#prev{     :type=>'button', :value=>'←', :name=>'prev',      :title=>"Previous",   :'data-key'=>"p"}/
         %a.center-button{href: "#", title: "Play/Pause"}
-          %i.icon-stop
+          %i.fa.fa-play
             %input#playpause{"data-key" => " ", "data-key-name"=>"space", name: "playpause", title: "Play/Pause (space)", type: "button", value: "▸/ll"}/
     %script{:src => '/jquery.min.js'}
     %script{:src => '/script.js'}

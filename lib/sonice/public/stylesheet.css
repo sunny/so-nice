@@ -208,14 +208,20 @@ a {
 }
 
 i {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  position: absolute;
-  font-size: 42px;
-  top: 36%;
-  left: 39%;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  position: inherit;
+  font-size: 30px;
+  top: 28%;
+  left: 35%;
   text-shadow: 1px 1px 4px white, 0px 0px 0px rgba(0, 0, 0, 0.5);
-  color: rgba(0, 0, 0, 0.15);
+  color: rgba(6, 2, 35, 0.05);
+}
+
+i.small{
+  font-size: 21px;
+  left: 38%;
+  top: 28%;
 }
 

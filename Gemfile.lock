@@ -3,6 +3,7 @@ PATH
   specs:
     sonice (2.1.0)
       anyplayer (> 1.1.1)
+      font-awesome-less
       haml
       sinatra
       thin
@@ -13,12 +14,17 @@ GEM
   specs:
     anyplayer (1.1.2)
       ruby-mpd (~> 0.3.0)
+    commonjs (0.2.7)
     daemons (1.1.9)
     eventmachine (1.0.3)
+    font-awesome-less (4.1.0)
+      less (~> 2.4.0)
     haml (4.0.3)
       tilt
+    less (2.4.0)
+      commonjs (~> 0.2.7)
     rack (1.5.2)
-    rack-protection (1.5.0)
+    rack-protection (1.5.3)
       rack
     ruby-mpd (0.3.0)
     sinatra (1.4.3)
