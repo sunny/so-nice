@@ -5,7 +5,7 @@ PATH
       anyplayer (> 1.1.1)
       haml
       sinatra
-      thin (>= 1.6.0)
+      thin (~> 1.6.0)
       xml-simple
 
 GEM

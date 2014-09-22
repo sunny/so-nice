@@ -24,6 +24,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'sinatra'
   s.add_runtime_dependency 'haml'
   s.add_runtime_dependency 'xml-simple'
-  s.add_runtime_dependency 'thin', '>= 1.6.0'
+  s.add_runtime_dependency 'thin', '~> 1.6.0'
   s.add_development_dependency 'rake'
 end
