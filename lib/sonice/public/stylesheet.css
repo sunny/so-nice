@@ -86,25 +86,23 @@ form {
 
 /* Remote Control Position setup*/
 #remote-control{
-  position: absolute;
-  top: 450px;
-  left: 1010px;
+   position: relative;
+   display: block;
+
 }
 
 #remote-control input{
- float: left;
- clear: both;
- margin-top: 20px;
- display: none;
+  float: left;
+  clear: both;
+  margin-top: 20px;
+  display: none;
 
 }
-
-/* Remote Control Body parts - as sourced from CodePen.io (http://codepen.io/vescoyez/pen/ulFtz)*/
 
 nav {
   width: 200px;
   height: 200px;
-  background: #60b8ce;
+  background: #979EA0;
   border-radius: 20%;
   padding: 20px;
   -webkit-transform: rotate(90deg);
@@ -112,6 +110,12 @@ nav {
   transform: rotate(90deg);
   box-shadow: inset -12px 0 12px -6px #dddddd, inset 12px 0 12px -6px #eeeeee, inset 0 0 0 12px #eeeeee, inset 2px 0 4px 12px rgba(0, 0, 0, 0.4), 1px 0 4px rgba(0, 0, 0, 0.8);
   box-sizing: border-box;
+  /*The position of the remote control*/
+  position: fixed;
+  top: 574px;
+  left: 37px;
+  z-index: 100;
+  cursor: move;
 
 }
 
