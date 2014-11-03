@@ -3,10 +3,9 @@ Changelog
 
 So Nice tries its best to follow Semantic Versioning.
 
-## Latest branch
+## v2.1.2
 
-Bugfixes :
-
+- Fix Sinatra upgrade [#22]
 - Fix Thin dependency so as not to break with thin versions > 2
 
 ## v2.1.1
