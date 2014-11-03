@@ -15,7 +15,8 @@ module Sonice
     set :protection, except: :frame_options
 
     def initialize
-      @player = player
+      player
+      super
     end
 
     def player
