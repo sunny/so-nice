@@ -20,10 +20,11 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n")
                                            .map { |f| File.basename(f) }
 
-  s.add_runtime_dependency 'anyplayer', '> 1.1.1'
+  s.add_runtime_dependency 'anyplayer', '>= 1.1.4'
   s.add_runtime_dependency 'sinatra'
   s.add_runtime_dependency 'haml'
   s.add_runtime_dependency 'xml-simple'
   s.add_runtime_dependency 'thin', '~> 1.6.3'
+
   s.add_development_dependency 'rake'
 end
