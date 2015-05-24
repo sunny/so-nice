@@ -15,7 +15,7 @@
     %h2#artist= @artist
     %h3#album= @album
 
-    %form{:method => 'post', :action => 'player'}
+    %form{:method => 'post', :action => 'player', :'data-sonice-show-if-connected' => 'controls'}
       %input{:type => "hidden", :name => "_method", :value => "put"}
       - if settings.controls
         %input#playpause{:type=>'button', :value=>'▶', :name=>'playpause', :title=>"Play/Pause", :'data-key'=>" ", :'data-key-name'=>"space"}

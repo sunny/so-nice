@@ -38,9 +38,14 @@ module Sonice
       @title = player.track
       @artist = player.artist
       @album = player.album
+      @connected = player.launched?
+
       if request.xhr?
         content_type :json
-        { title: @title, artist: @artist, album: @album }.to_json
+        { title: @title,
+          artist: @artist,
+          album: @album,
+          connected: @connected }.to_json
       else
         haml :index
       end
