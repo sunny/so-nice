@@ -16,20 +16,8 @@
     %h2#artist= @artist
     %h3#album= @album
 
-    / %form{:method => 'post', :action => 'player'}
-    /   %input{:type => "hidden", :name => "_method", :value => "put"}
-    /   - if settings.controls
-    /     %input#playpause{:type=>'button', :value=>'▸', :name=>'playpause', :title=>"Play/Pause", :'data-key'=>" ", :'data-key-name'=>"space"}
-    /     %input#prev{     :type=>'button', :value=>'←', :name=>'prev',      :title=>"Previous",   :'data-key'=>"p"}
-    /     %input#next{     :type=>'button', :value=>'→', :name=>'next',      :title=>"Next",       :'data-key'=>"n"}
-    /     %input#voldown{  :type=>'button', :value=>'♪', :name=>'voldown',   :title=>"Quieter",    :'data-key'=>"-"}
-    /     %input#volup{    :type=>'button', :value=>'♫', :name=>'volup',     :title=>"Louder",     :'data-key'=>"+"}
-    /   - if settings.voting
-    /     %input#vote{     :type=>'button', :value=>'↡', :name=>'vote',      :title=>"Vote to Skip", :'data-key' => "s" }
-    /   %input#showremote{:type=>'button', :value=>'☼', :name=>'showremotecontrol', :title=>"Show Remote", :'data-key'=>" ", :'data-key-name'=>"space"}
-
-  %form#remote-control{action: "player", method: "post"}
-    %nav
+  %form#remote-control{action: "player", method: "post", draggable: "true"}
+    %nav{draggable: "true"}
       %input{name: "_method", title: "undefined (undefined)", type: "hidden", value: "put"}/
       - if settings.controls
         %a.button.top-right{href: "#", title: 'Volume +'}
@@ -46,7 +34,7 @@
             %input#prev{     :type=>'button', :value=>'←', :name=>'prev',      :title=>"Previous",   :'data-key'=>"p"}/
         %a.center-button{href: "#", title: "Play/Pause"}
           %i.fa.fa-play
-            %input#playpause{"data-key" => " ", "data-key-name"=>"space", name: "playpause", title: "Play/Pause (space)", type: "button", value: "▸/ll"}/
+            %input#playpause{:'data-key'=>" ", :'data-key-name'=>"space", :name=>"playpause", :title=>"Play/Pause (space)", :type=>"button", :value=>"▸/ll"}/
     %script{:src => '/jquery.min.js'}
     %script{:src => '/script.js'}
 
