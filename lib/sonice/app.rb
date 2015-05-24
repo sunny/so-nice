@@ -14,22 +14,14 @@ module Sonice
     set :haml, format: :html5
     set :protection, except: :frame_options
 
-    def initialize
-      player
-      super
-    end
-
-    def player
-      @player ||= begin
-        puts "Looking for a player..."
-        player = Anyplayer::Selector.new.player
-        abort "Error: no music player launched!" unless player
-        puts "Connected to #{player.name}"
-        player
-      end
+    def get_player
+      return @player if @player && @player.launched?
+      @player = Anyplayer::Selector.new.player || Noplayer.new
     end
 
     put '/player' do
+      player = get_player
+
       player.vote if settings.voting && params['vote']
 
       if settings.controls
@@ -41,6 +33,8 @@ module Sonice
     end
 
     get '/' do
+      player = get_player
+
       @title = player.track
       @artist = player.artist
       @album = player.album

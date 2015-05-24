@@ -12,4 +12,5 @@ require 'json'
 require 'thin'
 
 # So Nice
+require 'sonice/noplayer'
 require 'sonice/app'
