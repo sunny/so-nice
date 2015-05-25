@@ -86,9 +86,12 @@ form {
 
 /* Remote Control Position setup*/
 #remote-control{
-   position: relative;
-   display: block;
-
+  display: block;
+  position: fixed;
+  top: 500px;
+  left: 37px;
+  z-index: 100;
+  cursor: move;
 }
 
 #remote-control input{
@@ -96,7 +99,6 @@ form {
   clear: both;
   margin-top: 20px;
   display: none;
-
 }
 
 nav {
@@ -110,13 +112,6 @@ nav {
   transform: rotate(90deg);
   box-shadow: inset -12px 0 12px -6px #dddddd, inset 12px 0 12px -6px #eeeeee, inset 0 0 0 12px #eeeeee, inset 2px 0 4px 12px rgba(0, 0, 0, 0.4), 1px 0 4px rgba(0, 0, 0, 0.8);
   box-sizing: border-box;
-  /*The position of the remote control*/
-  position: fixed;
-  top: 574px;
-  left: 37px;
-  z-index: 100;
-  cursor: move;
-
 }
 
 a {
@@ -234,7 +229,7 @@ i.small{
   -khtml-user-select: none;
   -webkit-user-select: none;
   user-select: none;
-  /* Required to make elements draggable in old WebKit */
+  /* For old webkit -if lucky enough to support it*/
   -khtml-user-drag: element;
   -webkit-user-drag: element;
 }
