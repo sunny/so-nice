@@ -11,7 +11,7 @@ PATH
 GEM
   remote: http://rubygems.org/
   specs:
-    anyplayer (1.1.4)
+    anyplayer (1.1.5)
       ruby-mpd (~> 0.3.0)
     daemons (1.2.2)
     eventmachine (1.0.7)
@@ -21,7 +21,7 @@ GEM
     rack-protection (1.5.3)
       rack
     rake (10.3.2)
-    ruby-mpd (0.3.1)
+    ruby-mpd (0.3.3)
     sinatra (1.4.6)
       rack (~> 1.4)
       rack-protection (~> 1.4)
