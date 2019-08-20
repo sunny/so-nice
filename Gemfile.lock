@@ -17,8 +17,8 @@ GEM
     eventmachine (1.0.7)
     haml (4.0.6)
       tilt
-    rack (1.6.2)
-    rack-protection (1.5.3)
+    rack (1.6.11)
+    rack-protection (1.5.5)
       rack
     rake (10.3.2)
     ruby-mpd (0.3.1)
