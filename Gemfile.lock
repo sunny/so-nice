@@ -20,14 +20,14 @@ GEM
       tilt
     mustermann (1.0.3)
     rack (2.0.7)
-    rack-protection (2.0.5)
+    rack-protection (2.0.6)
       rack
     rake (12.3.3)
     ruby-mpd (0.3.3)
-    sinatra (2.0.5)
+    sinatra (2.0.6)
       mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.5)
+      rack-protection (= 2.0.6)
       tilt (~> 2.0)
     temple (0.8.1)
     thin (1.7.2)
