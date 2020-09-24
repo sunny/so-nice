@@ -11,7 +11,6 @@ module Sonice
     set :static, true
     set :public_dir, File.expand_path('../public', __FILE__)
     set :views, File.expand_path('../views', __FILE__)
-    set :haml, format: :html5
     set :protection, except: :frame_options
 
     def get_player
@@ -47,7 +46,7 @@ module Sonice
           album: @album,
           connected: @connected }.to_json
       else
-        haml :index
+        erb :index
       end
     end
   end

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    <% if !@artist && !@title %>
+      So Nice ♫
+    <% else %>
+      <%= [@artist, @title].compact.join(" — ") %>
+    <% end %>
+  </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/stylesheet.css" />
+</head>
+<body>
+  <h1 id="title"><%= @title %></h1>
+  <h2 id="artist"><%= @artist %></h2>
+  <h3 id="album"><%= @album %></h3>
+
+  <h1 style="display:none" data-sonice-hide-if-connected>Connecting…</h1>
+
+  <form method="post" action="player" data-sonice-show-if-connected>
+    <input name="_method" type="hidden" value="put">
+    <% if settings.controls %>
+      <input
+        type="button"
+        value="▶"
+        id="playpause"
+        name="playpause"
+        title="Play/Pause"
+        data-key-name="space"
+        data-key=" "
+      />
+      <input
+        type="button"
+        value="←"
+        id="prev"
+        name="prev"
+        title="Previous"
+        data-key="p"
+      />
+      <input
+        type="button"
+        value="→"
+        id="next"
+        name="next"
+        title="Next"
+        data-key="n"
+      />
+      <input
+        type="button"
+        value="♪"
+        id="voldown"
+        name="voldown"
+        title="Quieter"
+        data-key="-"
+      />
+      <input
+        type="button"
+        value="♫"
+        id="volup"
+        name="volup"
+        title="Louder"
+        data-key="+"
+      />
+    <% end %>
+    <% if settings.voting %>
+      <input
+        type="button"
+        value="↡"
+        id="vote"
+        name="vote"
+        title="Vote to Skip"
+        data-key="s"
+      />
+    <% end %>
+  </form>
+  <script src="/jquery.min.js"></script>
+  <script src="/script.js"></script>
+</body>
+</html>
