@@ -1,13 +1,15 @@
 body {
   padding: 2em;
   margin: 0;
-  background-color: black;
-  background-position: center center fixed no-repeat;
-  background-repeat: bo-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+  background-color: #555;
   color: white;
   font: 1.5em Helvetica, sans-serif;
+
+  /* Prepare for having a background-image */
+  background-position: center center fixed no-repeat;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 /* Overlay image */
@@ -31,19 +33,19 @@ h1, h2, h3 {
   text-shadow: black 0 0 7px;
 }
 
-  h1 {
-    font-size: 230%;
-  }
+h1 {
+  font-size: 230%;
+}
 
-  h2 {
-    font-size: 150%;
-  }
+h2 {
+  font-size: 150%;
+}
 
-  h3 {
-    font-size: 100%;
-    margin-top: 1ex;
-    font-weight: normal;
-  }
+h3 {
+  font-size: 100%;
+  margin-top: 1ex;
+  font-weight: normal;
+}
 
 form {
   opacity: .5;
@@ -52,35 +54,33 @@ form {
   left: 42px;
 }
 
-  form:hover {
-    opacity: 1;
-  }
+form:hover {
+  opacity: 1;
+}
 
+input {
+  font-size: 1em;
+  color: inherit;
+  text-decoration: none;
+  padding: .2em .3em;
+  background: #222;
+  color: #aaa;
+  -webkit-border-radius: .4em;
+  -moz-border-radius: .4em;
+  -o-border-radius: .4em;
+  border-radius: .4em;
+  border: .1em solid #222;
+  cursor: pointer;
+  width: 2em;
+  height: 2em;
+}
+
+input:hover {
+  border-color: inherit;
+}
+
+@media (max-width:800px) {
   input {
-    font-size: 1em;
-    color: inherit;
-    text-decoration: none;
-    padding: .2em .3em;
-    background: #222;
-    color: #aaa;
-    -webkit-border-radius: .4em;
-    -moz-border-radius: .4em;
-    -o-border-radius: .4em;
-    border-radius: .4em;
-    border: .1em solid #222;
-    cursor: pointer;
-    width: 2em;
-    height: 2em;
-
+    font-size: 2em;
   }
-
-    input:hover {
-      border-color: inherit;
-    }
-
-    @media (max-width:800px) {
-      input {
-	      font-size: 2em;
-	    }
-    }
-
+}
