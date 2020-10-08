@@ -13,6 +13,7 @@ module Sonice
     set :public_dir, File.expand_path('public', __dir__)
     set :views, File.expand_path('views', __dir__)
     set :protection, except: :frame_options
+    set :server, :webrick
 
     def player_instance
       return @player if @player&.launched?

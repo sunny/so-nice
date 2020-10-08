@@ -8,7 +8,6 @@ require 'anyplayer'
 require 'sinatra'
 require 'xmlsimple' # xml-simple gem
 require 'json'
-require 'thin'
 
 # So Nice
 require 'sonice/noplayer'

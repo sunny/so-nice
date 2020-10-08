@@ -22,9 +22,9 @@ Gem::Specification.new do |s|
   s.executables =
     `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
 
-  s.add_runtime_dependency 'anyplayer', '>= 1.1.4'
+  s.add_runtime_dependency 'anyplayer', '>= 1.2.0'
   s.add_runtime_dependency 'sinatra'
-  s.add_runtime_dependency 'thin'
+  s.add_runtime_dependency 'webrick'
   s.add_runtime_dependency 'xml-simple'
 
   s.add_development_dependency 'rake'
