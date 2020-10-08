@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # You can start sonice using this configuration file by typing:
 #     bundle exec thin start
 
@@ -8,4 +10,3 @@
 
 require "sonice"
 run Sonice::App
-

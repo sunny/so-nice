@@ -1,5 +1,6 @@
-# -*- encoding: utf-8 -*-
-$LOAD_PATH.push File.expand_path("../lib", __FILE__)
+# frozen_string_literal: true
+
+$LOAD_PATH.push File.expand_path('lib', __dir__)
 require "sonice/version"
 
 Gem::Specification.new do |s|
@@ -23,8 +24,9 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'anyplayer', '>= 1.1.4'
   s.add_runtime_dependency 'sinatra'
-  s.add_runtime_dependency 'xml-simple'
   s.add_runtime_dependency 'thin'
+  s.add_runtime_dependency 'xml-simple'
 
   s.add_development_dependency 'rake'
+  s.add_development_dependency 'rubocop'
 end

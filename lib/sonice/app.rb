@@ -1,4 +1,5 @@
-# -*- encoding: utf-8 -*-
+# frozen_string_literal: true
+
 module Sonice
   # Sinatra application
   class App < Sinatra::Base
@@ -9,22 +10,23 @@ module Sonice
 
     set :logging, true
     set :static, true
-    set :public_dir, File.expand_path('../public', __FILE__)
-    set :views, File.expand_path('../views', __FILE__)
+    set :public_dir, File.expand_path('public', __dir__)
+    set :views, File.expand_path('views', __dir__)
     set :protection, except: :frame_options
 
-    def get_player
-      return @player if @player && @player.launched?
+    def player_instance
+      return @player if @player&.launched?
+
       @player = Anyplayer::Selector.new.player || Noplayer.new
     end
 
     put '/player' do
-      player = get_player
+      player = player_instance
 
       player.vote if settings.voting && params['vote']
 
       if settings.controls
-        methods = %w(playpause prev next voldown volup) & params.keys
+        methods = %w[playpause prev next voldown volup] & params.keys
         methods.each { |method| player.send(method) }
       end
 
@@ -32,7 +34,7 @@ module Sonice
     end
 
     get '/' do
-      player = get_player
+      player = player_instance
 
       @title = player.track
       @artist = player.artist
