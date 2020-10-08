@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     sonice (2.2.0)
-      anyplayer (>= 1.1.4)
+      anyplayer (>= 1.2.0)
       sinatra
       thin
       xml-simple

@@ -3,14 +3,30 @@ Changelog
 
 So Nice tries its best to follow Semantic Versioning.
 
+## Unreleased
+
+## v2.2.0
+
+Fixes:
+
+- Remove background image since LastFM API doesn’t contain images
+
+Dependencies:
+
+- Bump anyplayer dependency
+- Remove Haml dependency
+- Bump Sinatra dependency
+
 ## v2.1.2
 
-- Fix Sinatra upgrade [#22]
+Dependencies:
+
+- Fix Sinatra upgrade (#22)
 - Fix Thin dependency so as not to break with thin versions > 2
 
 ## v2.1.1
 
-Bugfixes :
+Fixes:
 
 - Fix LastFM JavaScript (thanks @datagutt)
 - Fix Thin dependency with Sinatra
