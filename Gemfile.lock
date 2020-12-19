@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     sonice (2.2.0)
-      anyplayer (>= 1.2.0)
+      anyplayer (>= 1.2.1)
       sinatra
       webrick
       xml-simple
@@ -10,7 +10,7 @@ PATH
 GEM
   remote: http://rubygems.org/
   specs:
-    anyplayer (1.2.0)
+    anyplayer (1.2.1)
       ruby-mpd (~> 0.3.0)
     ast (2.4.1)
     mustermann (1.1.1)
