@@ -2,5 +2,5 @@
 
 # Module Sonice
 module Sonice
-  VERSION = "2.2.0"
+  VERSION = "2.2.1"
 end

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sonice (2.2.0)
+    sonice (2.2.1)
       anyplayer (>= 1.2.1)
       sinatra
       webrick
