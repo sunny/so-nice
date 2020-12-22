@@ -5,6 +5,11 @@ So Nice tries its best to follow Semantic Versioning.
 
 ## Unreleased
 
+## v2.2.1
+
+- Remove rake executable in gemspec.
+- Bump anyplayer dependency
+
 ## v2.2.0
 
 Fixes:

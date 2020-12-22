@@ -19,10 +19,9 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.files = `git ls-files`.split("\n")
   s.test_files = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables =
-    `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
+  s.executables = ["sonice"]
 
-  s.add_runtime_dependency 'anyplayer', '>= 1.2.0'
+  s.add_runtime_dependency 'anyplayer', '>= 1.2.1'
   s.add_runtime_dependency 'sinatra'
   s.add_runtime_dependency 'webrick'
   s.add_runtime_dependency 'xml-simple'
