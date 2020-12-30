@@ -47,7 +47,7 @@ GEM
     tilt (2.0.10)
     unicode-display_width (1.7.0)
     webrick (1.7.0)
-    xml-simple (1.1.7)
+    xml-simple (1.1.8)
 
 PLATFORMS
   ruby
