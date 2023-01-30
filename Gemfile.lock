@@ -46,7 +46,7 @@ GEM
       tilt (~> 2.0)
     tilt (2.0.11)
     unicode-display_width (1.7.0)
-    webrick (1.8.0)
+    webrick (1.8.1)
     xml-simple (1.1.9)
       rexml
 
