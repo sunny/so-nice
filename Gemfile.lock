@@ -50,7 +50,7 @@ GEM
     strscan (3.1.0)
     tilt (2.3.0)
     unicode-display_width (1.7.0)
-    webrick (1.8.1)
+    webrick (1.8.2)
     xml-simple (1.1.9)
       rexml
 
