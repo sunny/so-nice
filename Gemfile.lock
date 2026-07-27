@@ -14,7 +14,7 @@ GEM
       ruby-mpd (~> 0.3.0)
     ast (2.4.3)
     base64 (0.2.0)
-    json (2.12.2)
+    json (2.19.9)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
     mustermann (3.0.0)
